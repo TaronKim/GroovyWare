@@ -1,6 +1,70 @@
-
 //top navi
 $(function(){
+	
+	//달력, DatePicker
+	$(".myDatePicker").datepicker({
+		showMonthAfterYear: true,
+		changeYear:true,
+		changeMonth:true,
+		//yearSuffix: "년",
+		dateFormat:'yy-mm-dd',
+		prevText: '이전 달',
+	    nextText: '다음 달',
+	    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+        dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+		
+		showOn: "button",
+	    buttonImage: "../images/ic_calender.png",
+	    buttonImageOnly: true,
+	    buttonText: "Select date"
+	});
+	
+	/*$(".ic_time").click(function(){
+		$(this).siblings().trigger("click");
+	});*/
+	
+	//시간, TimePicker
+	$('input.timepicker').timepicker({
+	    timeFormat: 'h:mm p',
+	    interval: 60,
+	    minTime: '10',
+	    maxTime: '6:00pm',
+	    startTime: '10:00',
+	    dynamic: false,
+	    dropdown: true,
+	    scrollbar: true
+	    
+	});
+	
+	//체크박스 클릭이벤트
+	/*$(".input_check").click(function(){
+		$(this).toggleClass("on");
+	});*/
+	
+	//체크박스 전체선택
+	/*$(".check_all").on("click",function(){
+		$("input:checkbox").toggleClass("on");
+		if($(".check_all").prop("checked",false)){
+			$(".check_all").prop("checked",true);
+			$(".d_check input:checkbox").prop("checked",true);
+		}else{
+			$(".check_all").prop("checked",false);
+			$(".d_check input:checkbox").prop("checked",false);
+		}
+	});*/
+	
+	//체크박스 활성, 비활성
+	/*$().click(function(){
+		if((".input_check").prop("disabled",true)){
+			$(this).addClass("disabled");
+		}else{
+			$(this).removeClass("disabled");
+		}
+	});*/
+	
 	//등록 팝업 공통이벤트
 	$(".btn_pop").on("click", function(){
 		$(".common_popup").show();
@@ -738,7 +802,7 @@ $(function () {
 	});
 });
 
-jQuery(function ($) {
+/*jQuery(function ($) {
 	var focusedElementSelector = "";
 	var prm = Sys.WebForms.PageRequestManager.getInstance();
 
@@ -764,6 +828,5 @@ jQuery(function ($) {
 			$(focusedElementSelector).focus();
 		}
 	});
-});
+});*/
 
-/**/
