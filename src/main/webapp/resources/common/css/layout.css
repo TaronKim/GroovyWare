@@ -3,6 +3,40 @@
 /* common */
 body {font-family:"Nanum Gothic", sans-serif !important;background:#ebe9e4;}
 
+/*달력 style*/
+.calender{position:relative;}
+.ui-datepicker-month,
+.ui-datepicker-year{height:21px;}
+
+.ui-datepicker-trigger{
+    margin: 0 2px;
+	position:absolute;
+	right:0;
+	top:0;
+	display:inline-block;
+    width: 22px;
+    height: 22px;
+}
+
+.setting{border: 1px solid #c1c8d6;
+    height: 53px;
+    background-color: #dcdfe6;}
+.setting .setting_left{float: left;
+    vertical-align: middle;
+    padding: 16px 15px 17px;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #7a8599;
+    color: #FFFFFF;}
+.setting .setting_right{    float: left;
+    vertical-align: middle;
+    padding-left: 15px;}    
+
+.btn_btm1{    clear: both;
+    position: relative;
+    margin: 10px 0;}
+    
+
 /*공통 팝업*/
 .common_popup{display:none;position: absolute;left: 50%;top: 50%;margin: -394px 0 0 -500px;z-index:9999;}
 /* 팝업 레이어 */
