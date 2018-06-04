@@ -1,6 +1,19 @@
 //top navi
 $(function(){
-
+	
+	//tab
+	$('.tab li a').on("click",function(e){
+		e.preventDefault;
+		var tab_id = $(this).attr('href');
+		
+		$('.tab li').removeClass('on');
+		$('.tab_cont').removeClass('on');
+	 
+		$(this).parents().addClass('on');
+		$(tab_id).addClass('on');
+		
+		return false;
+	});
 
 	$(".ic_search_wrap").each(function(){
 		var thisWrap = $(this);
