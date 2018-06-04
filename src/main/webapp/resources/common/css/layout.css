@@ -4,6 +4,7 @@
 body {font-family:"Nanum Gothic", sans-serif !important;background:#ebe9e4;}
 .btn_area{text-align: center;padding-bottom:20px;}
 .btn_style{cursor:pointer; background: #8c8482;color: #fff;padding: 0 20px;height: 37px;line-height: 37px;font-size: 1.154em;font-weight: bold;}
+.btn_style.type2{background:#fff;color:#000;}
 .btn_style.small{height: 30px;margin-top: 10px;line-height: 30px;}
 .check_area{text-align:center !important;}
 
