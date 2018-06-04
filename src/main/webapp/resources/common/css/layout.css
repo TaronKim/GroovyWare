@@ -2,6 +2,17 @@
 
 /* common */
 body {font-family:"Nanum Gothic", sans-serif !important;background:#ebe9e4;}
+.btn_area{text-align: center;padding-bottom:20px;}
+.btn_style{cursor:pointer; background: #8c8482;color: #fff;padding: 0 20px;height: 37px;line-height: 37px;font-size: 1.154em;font-weight: bold;}
+.btn_style.small{height: 30px;margin-top: 10px;line-height: 30px;}
+.check_area{text-align:center !important;}
+
+/*search_icon*/
+.ic_search_wrap{position: absolute;right: 0;top: 0;}
+.ic_search{display:block;width: 36px;height: 30px;background: #8c8482 url(../../images/search_ic.png) no-repeat center center;
+    font-size: 0;
+    text-indent: -3000px;
+}
 
 /*달력 style*/
 .calender{position:relative;}
@@ -46,7 +57,8 @@ body {font-family:"Nanum Gothic", sans-serif !important;background:#ebe9e4;}
 } 
 
 /*공통 팝업*/
-.common_popup{display:none;position: absolute;left: 50%;top: 50%;margin: -394px 0 0 -500px;z-index:9999;}
+.common_popup{display:none;position: absolute;left: 50%;top: 50%;width:400px;height:380px;margin: -190px 0 0 -200px;z-index:9999;background:#ebe9e4;}
+.pop_contents{padding: 15px;margin-bottom: 10px;}
 /* 팝업 레이어 */
 .pop_layer{display:none;position:absolute;top:0;left:0;width:100%;height:100%;background:#000;opacity:0.5;z-index:999;}
 

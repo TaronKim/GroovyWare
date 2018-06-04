@@ -1,6 +1,25 @@
 //top navi
 $(function(){
 	
+	var thisPop = $(".d_open").attr("href");
+	var common_pop = $(".common_pop");
+	var marginLeft = common_pop.outerWidth() / 2;
+	var marginTop = common_pop.outerHeight() / 2;
+
+	$(".d_open").click(function() {
+		$(document).find(thisPop).show();
+		common_pop.css({
+			"margin-top" : -marginTop,
+			"margin-left" : -marginLeft
+		});
+
+		return false;
+	});
+
+	$(".d_close").click(function() {
+		$(document).find(thisPop).hide();
+	});
+	
 	//달력, DatePicker
 	$(".myDatePicker").datepicker({
 		showMonthAfterYear: true,
@@ -22,22 +41,7 @@ $(function(){
 	    buttonText: "Select date"
 	});
 	
-	/*$(".ic_time").click(function(){
-		$(this).siblings().trigger("click");
-	});*/
 	
-	//시간, TimePicker
-	$('input.timepicker').timepicker({
-	    timeFormat: 'h:mm p',
-	    interval: 60,
-	    minTime: '10',
-	    maxTime: '6:00pm',
-	    startTime: '10:00',
-	    dynamic: false,
-	    dropdown: true,
-	    scrollbar: true
-	    
-	});
 	
 	//체크박스 클릭이벤트
 	/*$(".input_check").click(function(){
