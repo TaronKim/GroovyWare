@@ -1,23 +1,26 @@
 //top navi
 $(function(){
-	
-	var thisPop = $(".d_open").attr("href");
-	var common_pop = $(".common_pop");
-	var marginLeft = common_pop.outerWidth() / 2;
-	var marginTop = common_pop.outerHeight() / 2;
 
-	$(".d_open").click(function() {
-		$(document).find(thisPop).show();
-		common_pop.css({
-			"margin-top" : -marginTop,
-			"margin-left" : -marginLeft
+
+	$(".ic_search_wrap").each(function(){
+		var thisWrap = $(this);
+		var thisPop = thisWrap.find(".d_open").attr("href");
+		var common_pop = $(".common_pop");
+		var marginLeft = common_pop.outerWidth() / 2;
+		var marginTop = common_pop.outerHeight() / 2;
+
+		thisWrap.find(".d_open").on("click",function() {
+			$(document).find(thisPop).show();
+			//alert(thisPop);
+			common_pop.css({
+				"margin-top" : -marginTop,
+				"margin-left" : -marginLeft
+			});
 		});
 
-		return false;
-	});
-
-	$(".d_close").click(function() {
-		$(document).find(thisPop).hide();
+		$(".d_close").click(function() {
+			$(document).find(thisPop).hide();
+		});
 	});
 	
 	//달력, DatePicker
