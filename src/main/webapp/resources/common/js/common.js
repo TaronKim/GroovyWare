@@ -1,6 +1,11 @@
 //top navi
 $(function(){
 	
+	//팝업닫기
+	$(".d_close_pop").click(function(){
+		$(".alert_pop").hide();
+	});
+	
 	//tab
 	$('.tab li a').on("click",function(e){
 		e.preventDefault;
@@ -34,8 +39,9 @@ $(function(){
 		$(".d_close").click(function() {
 			$(document).find(thisPop).hide();
 		});
+		
 	});
-	
+
 	//달력, DatePicker
 	$(".myDatePicker").datepicker({
 		showMonthAfterYear: true,
@@ -52,7 +58,7 @@ $(function(){
         dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
 		
 		showOn: "button",
-	    buttonImage: "../images/ic_calender.png",
+	    buttonImage: "resources/images/ic_calender.png",
 	    buttonImageOnly: true,
 	    buttonText: "Select date"
 	});
