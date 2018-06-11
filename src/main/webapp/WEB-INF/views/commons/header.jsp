@@ -7,25 +7,25 @@
 			<div class="logoarea">
 				<h1 class="logo"><a href="#">GroovyWare</a></h1>                          
 				<h1 id="_erp" class="tab1 tab_style">
-					<a href="#">탭메뉴<!-- <img src="/groupware/images/common/tab_btn_02_01.png" alt="로고" /> --></a>
+					<a href="#">탭메뉴</a>
 				</h1>
 				<h1 id="_groupware" class="tab2 tab_style on">
-					<a href="#">그룹웨어<!-- <img src="/groupware/images/common/tab_btn_02_02.png" alt="groupware" /> --></a>
+					<a href="#">그룹웨어</a>
 				</h1>
 				<h1 id="_crm" class="tab3 tab_style">
-					<a href="#">탭메뉴<!-- <img src="/groupware/images/common/tab_btn_02_03.png" alt="로고" /> --></a>
+					<a href="#">탭메뉴</a>
 				</h1>
 			</div>
 			<div id="gnb">
 				<dl class="infor">
 					<dt>회사 명</dt>
-					<dd><span class="infor_ic"><img id="_logophoto" src="../images/ic_company.png" height="24" width="24" /></span><a href="#" id="_companyname">인크레파스</a></dd>
+					<dd><span class="infor_ic"><img id="_logophoto" src="resources/images/ic_company.png" height="24" width="24" /></span><a href="#" id="_companyname">인크레파스</a></dd>
 					<dt>사용자 명</dt>
-					<dd><span class="infor_ic"><img id="_userphoto" src="../images/thumb_default.png" height="24" width="24" /></span><a href="#" id="_username">마이페이지</a></dd>
+					<dd><span class="infor_ic"><img id="_userphoto" src="resources/images/thumb_default.png" height="24" width="24" /></span><a href="#" id="_username">마이페이지</a></dd>
 				</dl>
 				<ul class="util">
-					<li><a href="#"><img src="../images/ic_logout.png" width="24" height="24" alt="로그아웃" title="로그아웃" /></a></li>
-					<li><a href="#?topmenu=6&submenu=1"><img src="../images/ic_setting.png" width="24" height="24" alt="환경설정" title="환경설정"/></a></li>					
+					<li><a href="#"><img src="resources/images/ic_logout.png" width="24" height="24" alt="로그아웃" title="로그아웃" /></a></li>
+					<li><a href="#?topmenu=6&submenu=1"><img src="resources/images/ic_setting.png" width="24" height="24" alt="환경설정" title="환경설정"/></a></li>					
 				</ul>
 			</div>
 		</div>
@@ -76,14 +76,20 @@
 						<li>
 							<span>기초정보</span>
 							<ul>
-								<li><a href="#">직급 등록</a></li>
-								<li><a href="#">직책 등록</a></li>
+								<li><a href="javascript:location.href='position_regist.gvy'">직급 등록</a></li>
+								<li><a href="javascript:location.href='duty_regist.gvy'">직책 등록</a></li>
 							</ul>
 						</li>
 						<li>
-							<span>사원정보관리</span>
+							<span>사원정보</span>
 							<ul>
 								<li><a href="javascript:location.href='emp_regist.gvy'">사원 등록</a></li>
+							</ul>
+						</li>
+						<li>
+							<span>부서정보</span>
+							<ul>
+								<li><a href="javascript:location.href='dept_regist.gvy'">부서 등록</a></li>
 							</ul>
 						</li>
 					</ul>

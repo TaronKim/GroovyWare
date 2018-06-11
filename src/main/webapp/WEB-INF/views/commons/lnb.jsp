@@ -44,16 +44,22 @@
 							<li>
 								<span>기초정보</span>
                                 <ul style="display: none;">
-                                	<li><a href="/Groupware/Affair/GRegulationList.aspx?topmenu=4&amp;submenu=1&amp;current=1">직급 등록</a></li>
-                                	<li><a href="/Groupware/Affair/GFormTemplateList.aspx?topmenu=4&amp;submenu=1&amp;current=2">직책 등록</a></li>
+                                	<li><a href="javascript:location.href='position_regist.gvy'">직급 등록</a></li>
+                                	<li><a href="javascript:location.href='duty_regist.gvy'">직책 등록</a></li>
                                 </ul>
                             </li>
                             <li>
-                                <span>사원정보관리</span>
+                                <span>사원정보</span>
                                 <ul style="display: none;">
                                     <li><a href="javascript:location.href='emp_regist.gvy'">사원 등록</a></li>
                                 </ul>
-                            </li> 
+                            </li>
+                            <li>
+                                <span>부서정보</span>
+                                <ul style="display: none;">
+                                    <li><a href="javascript:location.href='dept_regist.gvy'">부서 등록</a></li>
+                                </ul>
+                            </li>
 						</ul>
 					</li>
 					<li>
