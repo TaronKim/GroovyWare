@@ -1,6 +1,8 @@
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
 /* common */
+.ta_c{text-align:center;}
+
 body {font-family:"Nanum Gothic", sans-serif !important;background:#ebe9e4;}
 .btn_area{text-align: center;padding-bottom:20px;}
 .btn_style{display:inline-block;border:none;cursor:pointer; background: #8c8482;color: #fff !important;padding: 0 20px;height: 37px;line-height: 37px;font-size: 1.154em;font-weight: bold;}

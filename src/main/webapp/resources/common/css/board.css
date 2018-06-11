@@ -1,5 +1,13 @@
+/*체크박스*/
+/* input[type=checkbox].input_check{position: static;width: 20px;height: 22px;vertical-align: middle;margin: 0;-webkit-appearance: none;outline: 0;background:url(../../images/CheckBoxSprites.gif)}
+input[type=checkbox].input_check:hover{background-position:0 -200px;}
+input[type=checkbox].input_check.on{background-position:0 -420px;}
+input[type=checkbox].input_check.disabled{background-position:0 -860px;} */
+
 /* brd_list2 ==================================================*/
 /* table */
+.search_none{text-align:center;height:475px !important;}
+
 .RadGrid.brd_list2 {border-bottom:1px solid #d1cfc9;}
 .RadGrid.brd_list2 .rgHeaderWrapper {background:#548e51;}
 .RadGrid.brd_list2 table.rgMasterTable {position:relative; clear:both; width:100%; }
