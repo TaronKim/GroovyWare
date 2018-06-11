@@ -41,10 +41,14 @@ $(function(){
 				"margin-top" : -marginTop,
 				"margin-left" : -marginLeft
 			});
+			
+			return false;
 		});
 
 		$(".d_close").click(function() {
 			$(document).find(thisPop).hide();
+			
+			return false;
 		});
 		
 	});
@@ -61,6 +65,8 @@ $(function(){
 		
 		$(".d_close").click(function() {
 			$(document).find(thisPop).hide();
+			
+			return false;
 		});
 	});
 	
