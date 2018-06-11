@@ -48,7 +48,22 @@ $(function(){
 		});
 		
 	});
-
+	
+	//Update를 위한 팝업
+	$(".rgRow").each(function(){
+		var thisPop = $(".btn_update").attr("href");
+		
+		$(".btn_update").on("click",function(){
+			$(document).find(thisPop).show();
+			
+			return false;
+		});
+		
+		$(".d_close").click(function() {
+			$(document).find(thisPop).hide();
+		});
+	});
+	
 	//달력, DatePicker
 	$(".myDatePicker").datepicker({
 		showMonthAfterYear: true,
