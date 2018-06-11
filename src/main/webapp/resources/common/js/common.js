@@ -1,9 +1,16 @@
 //top navi
 $(function(){
 	
+	//input 숫자만 입력
+	function onlyNumber(obj) {
+	    $(obj).keyup(function(){
+	         $(this).val($(this).val().replace(/[^0-9]/g,""));
+	    }); 
+	}
+	
 	//팝업닫기
 	$(".d_close_pop").click(function(){
-		$(".alert_pop").hide();
+		$(".alert_pop").removeClass("on");
 	});
 	
 	//tab
@@ -63,33 +70,19 @@ $(function(){
 	    buttonText: "Select date"
 	});
 	
-	
-	
-	//체크박스 클릭이벤트
-	/*$(".input_check").click(function(){
-		$(this).toggleClass("on");
-	});*/
-	
-	//체크박스 전체선택
-	/*$(".check_all").on("click",function(){
-		$("input:checkbox").toggleClass("on");
-		if($(".check_all").prop("checked",false)){
-			$(".check_all").prop("checked",true);
-			$(".d_check input:checkbox").prop("checked",true);
+	//전체체크
+	$(".check_all").click(function(){
+		
+		var check_all = $(".check_all");
+		var checkbox = $("input:checkbox");
+		
+		if(check_all.prop("checked")){
+			checkbox.prop("checked",true);
 		}else{
-			$(".check_all").prop("checked",false);
-			$(".d_check input:checkbox").prop("checked",false);
+			checkbox.prop("checked",false);
 		}
-	});*/
-	
-	//체크박스 활성, 비활성
-	/*$().click(function(){
-		if((".input_check").prop("disabled",true)){
-			$(this).addClass("disabled");
-		}else{
-			$(this).removeClass("disabled");
-		}
-	});*/
+
+	});	
 	
 	//등록 팝업 공통이벤트
 	$(".btn_pop").on("click", function(){

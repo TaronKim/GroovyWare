@@ -93,7 +93,12 @@ body {font-family:"Nanum Gothic", sans-serif !important;background:#ebe9e4;}
 
 /*공통 팝업*/
 .common_popup{display:none;position: absolute;left: 50%;top: 50%;width:400px;height:380px;margin: -190px 0 0 -200px;z-index:9999;background:#ebe9e4;}
+.common_popup.type2{height:240px;margin:-120px 0 0 -200px;}
 .common_popup.pop_depth{}
+.common_popup .pop_head{position:relative;padding: 0 20px;color: #FFF;background: #544e4c;}
+.common_popup .pop_head .tit{padding: 14px 0 14px 10px;font-size: 1.154em;font-weight: bold;background: url(../../images/pop_tit_ic.png) no-repeat 0 16px;}
+.common_popup .pop_head .this_pop_close{position:absolute;right:15px;top:15px;width: 16px;height:15px;background: url(../../images/pop_btn_close.png) no-repeat 0 0;text-indent:-9999px;}
+
 .pop_contents{padding: 15px;margin-bottom: 10px;}
 /* 팝업 레이어 */
 .pop_layer{display:none;position:absolute;top:0;left:0;width:100%;height:100%;background:#000;opacity:0.5;z-index:999;}
