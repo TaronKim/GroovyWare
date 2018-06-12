@@ -1,6 +1,7 @@
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
 /* common */
+input:read-only{background:#dad4c4;}
 .ta_c{text-align:center;}
 
 body {font-family:"Nanum Gothic", sans-serif !important;background:#ebe9e4;}
@@ -579,6 +580,7 @@ table.rwTable tbody tr.rwTitleRow td.rwTitlebar {background:#FFF; border-bottom:
 .RadUpload ul.ruInputs  {}
 .RadUpload ul.ruInputs li {}
 .RadUpload ul.ruInputs li span.ruFileWrap {height:auto; width:89%;}
+.RadUpload ul.ruInputs li span.ruFileWrap.mr{margin-right:-95px;}
 .RadUpload ul.ruInputs li span.ruFileWrap input.ruFakeInput {width:75% !important; height:28px; border:1px solid #d5d9e0;}
 .RadUpload ul.ruInputs li span.ruFileWrap input.ruButton {height:30px; font-weight:bold; color:#FFF;  background:#8c8482}
 .RadUpload ul.ruInputs li span.ruFileWrap input.ruFileInput {border:1px solid red !important; }
