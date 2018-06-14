@@ -313,8 +313,8 @@ body {font-family:"Nanum Gothic", sans-serif !important;background:#ebe9e4;}
 .tab2_wrap ul.tab2 li.on a {color:#333; background:#ebe9e4;}
 .tab2_con {display:none;}
 /* 본문 제목 */
-.tit_bdy1 {padding-left:28px; font-size:2.000em; font-weight:bold; color:#333; background:url("../../images/theme1/tit_bdy_ic_01.png") no-repeat 0 4px; margin:-4px 0 13px;}
-.tit_bdy2 {padding-left:24px; font-size:1.400em; font-weight:bold; color:#333; background:url("../../images/theme1/tit_sub_ic_01.png") no-repeat 0 4px;  margin:-4px 0 13px;}
+.tit_bdy1 {padding-left:28px; font-size:2.000em; font-weight:bold; color:#333; background:url("../../images/tit_bdy_ic_01.gif") no-repeat 0 4px; margin:-4px 0 13px;}
+.tit_bdy2 {padding-left:24px; font-size:1.400em; font-weight:bold; color:#333; background:url("../../images/tit_sub_ic_01.png") no-repeat 0 4px;  margin:-4px 0 13px;}
 .tit_bdy3 {font-size:1.800em; font-weight:bold; color:#333; margin: 20px 10px 10px 0;}
 /* 본문 상단 검색 박스 */
 .search_box {clear:both; position:relative; padding:20px; margin-bottom:30px;border:1px solid #dedcd7; background:#faf9f5; *zoom:1;}
