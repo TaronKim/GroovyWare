@@ -7,15 +7,7 @@
 	<resultMap type="mybatis.vo.MemVO" id="login_Map">
 		<association property="dvo" select="getDept" column="dept_name" javaType="mybatis.vo.DeptVO"/>		
 	</resultMap>
-	 
-	 <!--  
-	 <resultMap type="mybatis.vo.EmpVO" id="map1">
-		<association property="dvo" select="usetSetList" column="dept_name" javaType="mybatis.vo.DeptVO"/>
-		<association property="pvo" select="usetSetList" column="pos_name" javaType="mybatis.vo.PositionVO"/>
-		<association property="duty_vo" select="usetSetList" column="duty_name" javaType="mybatis.vo.DutyVO"/>
-	</resultMap>
-	-->
-	
+
 	<!-- 로그인 -->
 	<select id="login" resultType="mybatis.vo.MemVO" parameterType="java.util.Map">
 		SELECT * FROM emp_t
@@ -59,35 +51,6 @@
 		SELECT * FROM emp_t
 		WHERE e_pw = #{e_pw} AND e_id =#{e_id}
 	</select>
-<!--//////////////////////////////////////////////////////////////////////////////////////////// -->
-	
-	<!--권한등록화면 페이징 -->	
-	<!-- 페이징 기법에 사용될 전체게시물의 수를 
-		반환하는 기능: BoardDAO에 있는 getTotalCount()에서 호출 -->
-	<!-- 	
-	<select id="totalCount" resultType="int" parameterType="String">
-		SELECT COUNT(*) FROM emp_t	
-		
-	</select>
-	-->
-	<!-- 페이징 기법을 위한 목록을 반환하는 기능 -->
-	<!--  
-	<select id="list" resultType="mybatis.vo.MemVO" parameterType="java.util.Map">
-		SELECT * FROM (
-			SELECT e_code as e_num, a.* FROM (
-				SELECT * FROM emp_t
-				WHERE e_code=#{e_code}
-				ORDER BY e_code DESC
-			) a
-		) WHERE e_num BETWEEN #{begin} AND #{end}
-	
-	</select>
-	
-	 -->
-	
-	<!-- 사용자 설정 리스트 -->
-	<!-- <select id="usetSetList" resultType="map1">
-		select * from emp_t
-	</select> -->
+
 	
 </mapper>
