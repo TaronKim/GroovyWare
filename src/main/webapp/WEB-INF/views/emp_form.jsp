@@ -25,9 +25,9 @@
 <body>
 	<!-- wrap -->
     <div id="wrap">
-		<%@ include file="header.jsp" %>
+		<%@ include file="commons/header.jsp" %>
 		<div id="container">
-			<%@ include file="lnb.jsp" %>
+			<%@ include file="commons/lnb.jsp" %>
 			<!-- content -->
 			<div id="contents">
 				<!-- contents_bdy -->
