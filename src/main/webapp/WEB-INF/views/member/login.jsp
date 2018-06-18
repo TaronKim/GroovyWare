@@ -107,7 +107,7 @@
 		
 
 		var c_id = $("#_companyIdOD").val();
-		if (c_id.length > 5) {
+		if (c_id.length > 3) {
 			var param = "e_code=" + $("#_companyIdOD").val();
 			// jQuery비동기식 통신을 한다.
 			$.ajax({
