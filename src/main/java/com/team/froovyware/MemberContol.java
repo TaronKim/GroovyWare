@@ -32,6 +32,12 @@ public class MemberContol {
 	private HttpSession session;
 	
 	
+	//메인화면
+	@RequestMapping("index.gvy")
+	public String index() {
+		return "member/index";
+	}
+	
 	//로그인 화면으로 이동
 	@RequestMapping("/login.gvy") //get방식
 	public String login() {
