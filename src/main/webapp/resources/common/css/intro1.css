@@ -184,6 +184,7 @@
 }
 
 .login_form .login_bx dl dd {
+	position:relative;
 	margin-bottom: 5px;
 	text-align: center;
 	width: 320px;
@@ -213,6 +214,11 @@
 .login_form .login_bx dl dd span {
 	display: block;
 	height: 137px;
+}
+
+.login_form .login_bx dl dd span.chk_area{
+	position:absolute;
+	right:0;
 }
 
 .login_form .login_bx dl dd input {

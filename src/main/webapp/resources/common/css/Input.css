@@ -206,7 +206,7 @@ html body .riSingle .riTextBox {
 	margin: 0px; width: 100%; padding-right: 5px; padding-left: 5px;
 }
 html body .riSingle [type='text'].riTextBox {
-	margin: 0px; width: 100%; padding-right: 5px; padding-left: 5px;
+	margin: 0px; width: 100%; padding-right: 5px; padding-left: 5px;outline:none;
 }
 .rfdTextbox.RadForm .riSingle input.rfdDecorated {
 	padding-right: 5px; padding-left: 5px;
