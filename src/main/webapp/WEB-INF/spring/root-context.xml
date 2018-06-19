@@ -53,7 +53,9 @@
 	</bean><!-- sqlSession과 같은 객체 --> 
 	
 		<bean id="m_dao" class="mybatis.dao.MemDAO"/>
-		
+		<bean id="c_dao" class="mybatis.dao.CommuteDAO" /> 
+	<bean id="p_dao" class="mybatis.dao.PersonCommDAO" />
+	<bean id="w_dao" class="mybatis.dao.WorktimeDAO" /> 
 		
 		
 </beans>
