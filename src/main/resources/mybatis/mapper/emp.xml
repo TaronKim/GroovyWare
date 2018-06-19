@@ -43,8 +43,40 @@
 		values(upper(#{e_code}),#{pos_code},#{duty_code},#{dept_code},#{e_name},#{e_phone},#{e_cellphone},#{e_email},
 		#{e_addr},#{s_num},#{hire_date},sysdate,#{sal_type},#{marry_status},#{school_name},#{major},
 		#{bank_name},#{account},#{acc_name},#{resign_date},#{resign_reason},#{identity_file},#{attached_file},
-		#{e_post},'id','1111','일반','사용')
+		#{e_post},'id','1111','G','사용')
 	</insert>
+	
+	<!-- 사원수정  -->
+	<update id="empUpdate"  parameterType="mybatis.vo.EmpVO" >
+		UPDATE emp_t
+		SET
+		 e_name = #{e_name},sal_type = #{sal_type},s_num = #{s_num},marry_status = #{marry_status},school_name = #{school_name}
+		,major = #{major},e_phone = #{e_phone}, e_cellphone = #{e_cellphone},e_email = #{e_email},
+		e_addr = #{e_addr},hire_date = #{hire_date}, dept_code = #{dept_code}, duty_code = #{duty_code}, pos_code =#{pos_code} ,
+		bank_name = #{bank_name},  account = #{account},  acc_name = #{acc_name},
+		resign_date = #{resign_date},resign_reason = #{resign_reason} 
+		<if test="identity_file != null">
+		,identity_file = #{identity_file}
+		</if>
+		<if test="attached_file != null">
+		,attached_file = #{attached_file}
+		</if>
+		
+		<if test="e_post != null">		
+		,e_post = #{e_post}
+		</if>
+		<if test="per_level != null">	
+		, per_level = #{per_level}
+		</if>
+			
+		WHERE e_code = #{e_code}
+	</update>
+
+	<!-- e_code를 받아 사원정보검색 -->
+	<select id="empGet" parameterType="String" resultType="mybatis.vo.EmpVO">
+		select *from emp_t
+		where e_code =#{e_code}	
+	</select>
 	
 	<!-- 사원 체크선택 삭제 -->
 	<update id="empCheckDel" parameterType="String">
@@ -198,4 +230,52 @@
 		where duty_code = #{duty_code}
 	</select>
 	<!-- //부서,직급,직책의 select ajax -->
+	
+	
+	<!-- 사용자설정 mapper -->	
+	<resultMap type="mybatis.vo.EmpVO" id="map1">
+	<association property="dvo" select="getDept" column="dept_code" javaType="mybatis.vo.DeptVO"/>		
+	</resultMap>	
+	
+	<!-- 사용자 설정 리스트 -->
+	 <select id="userList" resultType="mybatis.vo.EmpVO" >
+		select * from emp_t
+	</select>
+	
+	<!-- 권한등록 페이지에서 쓰일 부서명 -->
+	<select id="userSetList" resultMap="map1" parameterType="java.util.Map">
+		SELECT * FROM emp_t
+		<if test="userSearch != null">
+			WHERE e_name like '%' ||  #{userSearch} || '%'
+		</if>
+	</select>
+	
+	<select id="getDept" resultType="mybatis.vo.DeptVO" parameterType="String">
+		select * from dept_t
+		where dept_code =#{dept_code}
+	</select>
+	
+	<!-- 권한변경 -->
+	<update id="update_level" parameterType="mybatis.vo.EmpVO">
+		update emp_t
+		set per_level =#{per_level}
+		where e_code =#{e_code}	
+	</update>
+	
+	<!-- 페이징 기법에 사용될 전체게시물의 수를  반환하는 기능 -->
+	<select id="totalCount" resultType="int" parameterType="String">
+		SELECT COUNT(*) FROM emp_t	
+	</select>
+	
+	<!-- 페이징 기법을 위한 목록을 반환하는 기능 -->
+	<select id="list" resultMap="map1" parameterType="java.util.Map">
+		SELECT * FROM (
+			SELECT rownum r, a.* FROM (
+				SELECT * FROM emp_t
+				ORDER BY e_code DESC
+                
+			) a
+		) where r BETWEEN 0 AND 5	
+	</select>
+	
 </mapper>

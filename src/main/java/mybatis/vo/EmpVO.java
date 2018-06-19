@@ -12,7 +12,7 @@ public class EmpVO {
 					e_cellphone,
 					e_email,
 					e_addr,
-					s_num,
+					s_num,					
 					hire_date,
 					con_year,
 					sal_type,
@@ -31,6 +31,7 @@ public class EmpVO {
 					e_pw,
 					per_level,
 					e_use;
+					
 	
 	private String[] s_num_ar,e_email_ar;
 	
@@ -111,6 +112,8 @@ public class EmpVO {
 
 	public void setE_email(String e_email) {
 		this.e_email = e_email;
+		if(e_email != null)
+			e_email_ar = e_email.split("@");// "@"를 중심으로 잘라내어 배열에 저장한다.
 	}
 
 	public String getE_addr() {
@@ -127,6 +130,8 @@ public class EmpVO {
 
 	public void setS_num(String s_num) {
 		this.s_num = s_num;
+		if(s_num != null)// 111111-111111
+			s_num_ar = s_num.split("-");// "-"를 중심으로 잘라내어 배열에 저장한다.
 	}
 
 	public String getHire_date() {
