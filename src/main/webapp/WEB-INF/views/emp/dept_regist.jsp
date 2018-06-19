@@ -175,7 +175,7 @@
           window.location.href = "login.gvy";
        </c:if>
     };
- </script>
+
 	
 		$(function(){
 			$("#btn_search").click(function(){

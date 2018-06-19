@@ -144,7 +144,7 @@
           window.location.href = "login.gvy";
        </c:if>
     };
- </script>
+
 	
 		$(function(){
 			

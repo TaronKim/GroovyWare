@@ -812,7 +812,7 @@
           window.location.href = "login.gvy";
        </c:if>
     };
- </script>
+
 	
 	
 		//다음 우편번호api

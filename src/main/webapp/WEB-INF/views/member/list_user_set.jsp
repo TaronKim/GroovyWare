@@ -27,7 +27,7 @@ window.onload = function(){
       window.location.href = "login.gvy";
    </c:if>
 };
-</script>
+
 </script>
 </head>
 	<body>

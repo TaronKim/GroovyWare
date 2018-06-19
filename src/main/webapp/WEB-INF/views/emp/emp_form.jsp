@@ -748,7 +748,7 @@
           window.location.href = "login.gvy";
        </c:if>
     };
- </script>
+
 	
 		//사진 첨부 input:text value
 		function photoName(fis){
