@@ -3,14 +3,22 @@ package mybatis.vo;
 public class MemVO {
 	private String
 	e_code,	
-	e_id,
-	e_pw,
+	e_id,	
 	e_name,
-	e_phone,	
+	e_phone,
+	per_level,
 	e_email;	
 	//private DeptVO dvo;	
-	
+		
 	public MemVO() {}//기본생성자
+
+	public String getPer_level() {
+		return per_level;
+	}
+
+	public void setPer_level(String per_level) {
+		this.per_level = per_level;
+	}
 
 	public String getE_code() {
 		return e_code;
@@ -26,14 +34,6 @@ public class MemVO {
 
 	public void setE_id(String e_id) {
 		this.e_id = e_id;
-	}
-
-	public String getE_pw() {
-		return e_pw;
-	}
-
-	public void setE_pw(String e_pw) {
-		this.e_pw = e_pw;
 	}
 
 	public String getE_name() {

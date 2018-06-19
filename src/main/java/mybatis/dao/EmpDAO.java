@@ -47,8 +47,27 @@ public class EmpDAO {
 		}
 		
 		return check;
+	}	
+	
+	//e_code를 가져와 사원정보를 얻는다.
+	public EmpVO empGet(String e_code) {
+		EmpVO evo =sqlSession.selectOne("emp.empGet", e_code);
+		return evo;
+				
 	}
 	
+	//사원수정
+	public boolean empUpdate(EmpVO evo) {
+		boolean check = false;
+		int cnt =	sqlSession.update("emp.empUpdate", evo);
+		if(cnt > 0) {
+			check = true;
+		}		
+		return check;
+			
+	}	
+	
+
 	
 	//사원번호 중복체크
 	public boolean checkEmpCode(String e_code) {
@@ -59,8 +78,7 @@ public class EmpDAO {
 		
 		if(evo != null) {
 			check = true;
-		}
-		
+		}		
 		return check;
 	}
 	
@@ -80,5 +98,67 @@ public class EmpDAO {
 		return check;
 		
 	}
+	
+	//유저 사원리스트
+	public EmpVO[] userSetList() {
+		
+		EmpVO[] ar = null;
+		
+		List<EmpVO> list = sqlSession.selectList("emp.userList");
+		
+		if(list != null && list.size() >0) {
+			ar = new EmpVO[list.size()];
+			list.toArray(ar);
+		}
+		
+		return ar;
+	}
+	
+	//권한등록에서 사용자이름 검색
+	public EmpVO[] ename(String userSearch) {
+		EmpVO[] ar =null;
+		System.out.println(userSearch);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("userSearch", userSearch);
+		
+		List<EmpVO> list = sqlSession.selectList("emp.userSetList",map);
+		System.out.println(list.get(0).getE_code());
+		if(list != null && list.size() >0) {
+			ar = new EmpVO[list.size()];
+			list.toArray(ar);
+		}
+		
+		return ar;
+	}
+	
+	//권한변경
+	public boolean perlevel(EmpVO evo) {
+		sqlSession.update("emp.update_level", evo);
+		return false;
+		
+	}
+	
+	//paging작업
+	//목록 화면을 만들기 위해 필요한 기능
+	public EmpVO[] getList(Map<String, String> map) {
+		//ListControl에서 현재 메서드를 호출할 때
+		//미리  begin, end를 넣은 Map구조를 생성하여 
+		// 인자로 보낸다.			
+		List<EmpVO> list = sqlSession.selectList("emp.list", map);			
+		EmpVO[] ar = null;
+		if(list != null && list.size() > 0) {
+			ar = new EmpVO[list.size()];				
+			//list에 저장된 항목들을 배열인 ar에 그대로 복사한다.
+			list.toArray(ar);
+		}
+		return ar;
+	}		
+	
+	
+	//전체 게시물의 수를 반환하는 기능
+	public int getTotalCount() {		
+		return sqlSession.selectOne("emp.totalCount");
+	}
+	
 	
 }
