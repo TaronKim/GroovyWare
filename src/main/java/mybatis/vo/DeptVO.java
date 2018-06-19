@@ -1,12 +1,7 @@
 package mybatis.vo;
 
 public class DeptVO {
-	private String 
-	dept_code,
-	dept_name,
-	dept_use;
-	
-	public DeptVO() {}
+	private String dept_code, dept_name, dept_use;
 
 	public String getDept_code() {
 		return dept_code;

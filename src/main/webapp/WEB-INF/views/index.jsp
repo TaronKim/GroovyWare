@@ -22,7 +22,7 @@
 <body>
 	<!-- wrap -->
     <div id="wrap">
-	<%@ include file="../commons/header.jsp" %>
+	<%@ include file="commons/header.jsp" %>
 		<div id="container">
 		<!--Contents-->
 			<div id="contents">

@@ -12,8 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="resources/common/css/board.css">
 	<link rel="stylesheet" type="text/css" href="resources/common/css/layout.css">
 	<link rel="stylesheet" type="text/css" href="resources/common/css/reset.css">
-	<link rel="stylesheet" type="text/css" href="resources/common/css/common.css">
-			
+	<link rel="stylesheet" type="text/css" href="resources/common/css/common.css">		
 	<script src="resources/common/js/jquery-3.3.1.min.js"></script>
 	<script src="resources/common/js/common.js"></script>
 	
@@ -21,12 +20,11 @@
 	<script src="resources/common/js/jquery-ui.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="resources/common/css/jquery-ui.css">
 	<!-- //jQuery UI -->
-
 </head>
 <body>
 	<!-- wrap -->
     <div id="wrap">
-	<%@ include file="../commons/header.jsp" %>
+		<%@ include file="../commons/header.jsp" %>
 		<div id="container">
 			<%@ include file="../commons/lnb.jsp" %>
 			<!-- content -->
@@ -132,7 +130,7 @@
 												<td class="col_ct">
 													<input id="ctl00_ContentPlaceHolder1_RadGridEmployee_ctl00_ctl04_chklineSelectCheckBox" class="input_check" type="checkbox" name="checkDel" value="${evo.e_code }">
 												</td>
-												<td class="col_ct"><a href="#empUpdate" class="btn_update" onclick="showData('${evo.e_code }')">${evo.e_code }</a></td>
+												<td class="col_ct"><a href="#empUpdate" class="btn_update" onclick="">${evo.e_code }</a></td>
 												<td class="col_ct">${evo.e_name }</td>
 												<td>${evo.dvo.dept_name}</td>
 												<td class="col_ct">${evo.pvo.pos_name }</td>
@@ -259,7 +257,7 @@
 																	
 																</span> -
 																<span id="_socialno02_wrapper" class="riSingle RadInput" style="width:160px;">
-																	<input id="s_num_ar" name="s_num_ar" class="s_num2" size="20" maxlength="20" type="text" style="width:80px;">
+																	<input name="s_num_ar" class="s_num2" size="20" maxlength="20" type="text" style="width:80px;">
 																</span>
 															</span>
 														</td>
@@ -268,8 +266,8 @@
 				                                        <th>결혼여부</th>
 														<td>
 															<div class="select_wrap">
-				                                            	<select style="width:258px;" id=marry_status name="marry_status">
-				                                            		<option value="기혼">기혼</option>
+				                                            	<select style="width:258px;" name="marry_status">
+				                                            		<option vlaue="기혼">기혼</option>
 				                                            		<option value="미혼">미혼</option>
 				                                            	</select>
 				                                            </div>
@@ -315,9 +313,9 @@
 															<span class="telerik_bx">
 																<div class="RadAjaxPanel" id="_emailPanel" style="display: inline;">
 																	<span id="_email_wrapper" class="riSingle RadInput" style="width:160px;">
-																		<input id="e_email" name="e_email_ar"  size="20" type="text" style="width:100px;">
+																		<input id="e_email" name="e_email_ar" size="20" type="text" style="width:100px;">
 																		@
-																		<input id="e_email_ar" name="e_email_ar" size="20" type="text" style="width:100px;">
+																		<input name="e_email_ar" size="20" type="text" style="width:100px;">
 																	</span>
 																</div>
 															</span>
@@ -366,7 +364,7 @@
 												<tr>
 													<th>입사일(*)</th>
 													<td>
-														<input type="text" name="hire_date" class="myDatePicker hire_date" />
+														<input type="text" name="hire_date" class="myDatePicker hire_date"/>
 													</td>	
 													
 													<th>부서</th>
@@ -490,7 +488,7 @@
 															<div id="_files" class="RadUpload RadUpload_">
 																<ul id="_filesListContainer" class="ruInputs">
 																	<li>
-																		<span class="ruFileWrap ruStyled mr">																		
+																		<span class="ruFileWrap ruStyled mr">
 																			<input type="file" name="upload" id="upload1" size="23" class="ruFileInput" style="width:625px;left:0;" onchange="fileName(this)" >
 																			<input type="text" class="ruFakeInput" id="fileNameText" size="22">
 																			<input type="button" value="찾아보기" class="ruButton ruBrowse">
@@ -521,7 +519,8 @@
 										</table>
 									</fieldset>
 									<!-- fieldset2 -->
-								</form>					
+								</form>
+								
 								
 								<div class="btn_area">
 									<button type="button" class="btn_style small" onclick="empUpdateMody()">수정</button>
@@ -544,7 +543,8 @@
 	
 	<script type="text/javascript">
 		$(function(){
-			$("#btn_emp_search").click(function(){			
+			$("#btn_emp_search").click(function(){
+				
 				
 				document.searchEmpFrm.submit();
 				
@@ -556,72 +556,11 @@
 			if($("#emp_table_wrap input:checkbox").is(":checked") == false){
 				alert("선택된 값이 없습니다.")
 				return;
-			}			
+			}
+			
 			document.selectDelFrm.submit();
 		}
 		
-		//사번을 클릭했을 때
-		function showData(empno){
-			//alert(empno);			
-		
-			var param = "e_code=" +empno;
-			// jQuery비동기식 통신을 한다.
-			$.ajax({
-				type : "POST",
-				url : "emp_update.gvy",
-				data : param,
-			}).done(function(res) { 								
-				$("#e_code").val(res.evo.e_code);
-				$("#e_name").val(res.evo.e_name);
-				$("#sal_type").val(res.evo.sal_type);				
-				$("#s_num").val(res.evo.s_num_ar[0]); //주민번호
-				$("#s_num_ar").val(res.evo.s_num_ar[1]);				
-				$("#marry_status").val(res.evo.marry_status);	
-				$("#school_name").val(res.evo.school_name);
-				$("#major").val(res.evo.major);
-				$("#e_phone").val(res.evo.e_phone);
-				$("#e_cellphone").val(res.evo.e_cellphone);				
-				$("#e_email").val(res.evo.e_email_ar[0]); //이메일
-				$("#e_email_ar").val(res.evo.e_email_ar[1]);			
-				$("#e_addr").val(res.evo.e_addr);
-				$("input[name=hire_date]").val(res.evo.hire_date.substring(0,10)); 				
-				$("#dept_name").val(res.evo.dept_name); //부서
-				$("#dept_code").val(res.evo.dept_code);			
-				$("#pos_name").val(res.evo.pos_name); //직급
-				$("#pos_code").val(res.evo.pos_name);				
-				$("#duty_name").val(res.evo.duty_name); //직책
-				$("#duty_code").val(res.evo.duty_code);				
-				$("#bank_name").val(res.evo.bank_name);				
-				$("#account").val(res.evo.account);				
-				$("#acc_name").val(res.evo.acc_name);		
-				$("#resign_reason").val(res.evo.resign_reason);	
-				$("#photoFileText").val(res.evo.identity_file);
-				$("#input[name=upload2]").val(res.evo.identity_file);		
-				$("#fileNameText").val(res.evo.attached_file);
-				$("#input[name=upload]").val(res.evo.attached_file);			
-				$("#photo").removeAttr("src");//청소
-				if(res.evo.identity_file)
-					$("#photo").attr("src","upload2/"+res.evo.identity_file);					
-			});				
-		}			
-		//사진 첨부 input:text value
-		function photoName(fis){
-			var f_path = fis.value;
-			var idx = f_path.lastIndexOf("\\")+1;
-			var f_name = f_path.substring(idx);
-			$("#photoFileText").val(f_name);
-		}				
-		//첨부파일 input:text value
-		function fileName(fis){		
-			var f_path = fis.value;
-			var idx = f_path.lastIndexOf("\\")+1;
-			var f_name = f_path.substring(idx);
-			$("#fileNameText").val(f_name);
-		}			
-		function empUpdateMody(){ 
-			document.empRegistFrm.action = "empupdate.gvy"; 
-			document.empRegistFrm.submit();
-		}		
 	</script>
 </body>
 </html>
