@@ -741,7 +741,15 @@
 	
 	
 	<script type="text/javascript">
-		
+	
+	<script type="text/javascript">
+    window.onload = function(){
+       <c:if test ="${sessionScope.mvo eq null}">
+          window.location.href = "login.gvy";
+       </c:if>
+    };
+ </script>
+	
 		//사진 첨부 input:text value
 		function photoName(fis){
 			var f_path = fis.value;

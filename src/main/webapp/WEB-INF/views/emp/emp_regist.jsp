@@ -806,6 +806,14 @@
 	
 	<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 	<script>
+	<script type="text/javascript">
+    window.onload = function(){
+       <c:if test ="${sessionScope.mvo eq null}">
+          window.location.href = "login.gvy";
+       </c:if>
+    };
+ </script>
+	
 	
 		//다음 우편번호api
 		var element_layer = document.getElementById('layer');

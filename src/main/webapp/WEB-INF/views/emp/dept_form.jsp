@@ -138,6 +138,14 @@
 	
 	<script type="text/javascript">
 	
+	<script type="text/javascript">
+    window.onload = function(){
+       <c:if test ="${sessionScope.mvo eq null}">
+          window.location.href = "login.gvy";
+       </c:if>
+    };
+ </script>
+	
 		$(function(){
 			
 			//부서코드 중복여부 버튼 클릭시
