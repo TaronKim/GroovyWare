@@ -44,9 +44,9 @@
 						<li>
 							<span>결재함</span>
 							<ul>
-								<li><a href="javascript:location.href='.gvy'">미결함</a></li>
-								<li><a href="javascript:location.href='.gvy'">기결함</a></li>
-								<li><a href="javascript:location.href='.gvy'">반려함</a></li>
+								<li><a href="javascript:location.href='approvalList.gvy?approval_kinds=0&path=notApproval'">미결함</a></li>
+								<li><a href="javascript:location.href='approvalList.gvy?approval_kinds=1&path=giveApproval'">기결함</a></li>
+								<li><a href="javascript:location.href='approvalList.gvy?approval_kinds=2&path=returnApproval'">반려함</a></li>
 							</ul>
 						</li>
 						<li><span><a href="javascript:location.href='.gvy'">수신함</a></span></li>

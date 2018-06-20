@@ -17,9 +17,9 @@
 							<li>
 								<span>결재함</span>
                                    <ul style="display: none;">
-                                       <li><a href="/Groupware/Approval/DocumentNoApproval.aspx?topmenu=1&amp;submenu=2&amp;current=1">미결함</a></li>
-                                       <li><a href="/Groupware/Approval/DocumentApproval.aspx?topmenu=1&amp;submenu=2&amp;current=2">기결함</a></li>
-                                       <li><a href="/Groupware/Approval/DocumentReturn.aspx?topmenu=1&amp;submenu=2&amp;current=3">반려함</a></li>
+                                      <li><a href="javascript:location.href='approvalList.gvy?approval_kinds=0&path=notApproval'">미결함</a></li>
+								<li><a href="javascript:location.href='approvalList.gvy?approval_kinds=1&path=giveApproval'">기결함</a></li>
+								<li><a href="javascript:location.href='approvalList.gvy?approval_kinds=2&path=returnApproval'">반려함</a></li>
                                    </ul>
 							</li>
 							<li><span><a href="/Groupware/Approval/DocumentReceived.aspx?topmenu=1&amp;submenu=3&amp;current=1">수신함</a></span></li>
