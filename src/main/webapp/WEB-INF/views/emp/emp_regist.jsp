@@ -536,7 +536,7 @@
 					<!-- deptPop -->
 					<div id="deptSearchPop" class="common_popup">
 						<!-- pop_contents -->
-						<div class="pop_contents">
+						<div class="pop_contents" id="pop1">
 							<!-- 상단검색 -->
 							<div class="pop_search_box">
 								<div class="search_brd">
@@ -610,7 +610,7 @@
 							<!-- //내용 -->
 							
 							<div class="btn_area">
-								<button type="button" class="btn_style small d_close">닫기</button>
+								<button type="button" class="btn_style small dd_close" onclick="clo()" >닫기</button>
 							</div>
 							
 						</div>
@@ -697,7 +697,7 @@
 							<!-- //내용 -->
 							
 							<div class="btn_area">
-								<button type="button" class="btn_style small d_close">닫기</button>
+								<button type="button" class="btn_style small dd_close">닫기</button>
 							</div>
 							
 						</div>
@@ -784,7 +784,7 @@
 							<!-- //내용 -->
 							
 							<div class="btn_area">
-								<button type="button" class="btn_style small d_close">닫기</button>
+								<button type="button" class="btn_style small dd_close">닫기</button>
 							</div>
 							
 						</div>
@@ -806,8 +806,6 @@
 	
 	<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 	<script>
-
-	
 	
 		//다음 우편번호api
 		var element_layer = document.getElementById('layer');
@@ -1121,13 +1119,12 @@
 			document.empRegistFrm.submit();
 		}		
 		
-
-	    window.onload = function(){
-	       <c:if test ="${sessionScope.mvo eq null}">
-	          window.location.href = "login.gvy";
-	       </c:if>
-	    };
-
+		function clo() {				
+			
+				$("#deptSearchPop").hide();
+							
+		}
+			
 	</script>
 </body>
 </html>
