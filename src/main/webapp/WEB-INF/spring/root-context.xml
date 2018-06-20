@@ -51,11 +51,14 @@
  	class="org.mybatis.spring.SqlSessionTemplate">
   		<constructor-arg index="0" ref="factory" />
 	</bean><!-- sqlSession과 같은 객체 --> 
-	
-		<bean id="m_dao" class="mybatis.dao.MemDAO"/>
-		<bean id="c_dao" class="mybatis.dao.CommuteDAO" /> 
-	<bean id="p_dao" class="mybatis.dao.PersonCommDAO" />
+	<bean id="c_dao" class="mybatis.dao.CommuteDAO" /> 
+	<bean id="pc_dao" class="mybatis.dao.PersonCommDAO" />
 	<bean id="w_dao" class="mybatis.dao.WorktimeDAO" /> 
-		
-		
+	<bean id="e_dao" class="mybatis.dao.EmpDAO" /> 
+	<bean id="m_dao" class="mybatis.dao.MemDAO"/>
+	<bean id="a_dao" class="mybatis.dao.ApprovalDAO"/>
+	<bean id="draft_dao" class="mybatis.dao.DraftDAO"/>
+	<bean id="d_dao" class="mybatis.dao.DeptDAO"/>
+	<bean id="duty_dao" class="mybatis.dao.DutyDAO"/>	
+	<bean id="p_dao" class="mybatis.dao.PositionDAO"/>	
 </beans>

@@ -21,7 +21,7 @@ import mybatis.vo.WorktimeVO;
 public class Person_commControl {
 	
 	@Autowired
-	private PersonCommDAO p_dao;
+	private PersonCommDAO pc_dao;
 	
 	@Autowired
 	private WorktimeDAO w_dao;
@@ -31,7 +31,7 @@ public class Person_commControl {
 	
 	@RequestMapping("personComm")
 	public ModelAndView personCommList() {
-		PersonCommVO[] p_list = p_dao.getList();
+		PersonCommVO[] p_list = pc_dao.getList();
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("p_list",p_list);
@@ -63,7 +63,7 @@ public class Person_commControl {
 		map.put("ip_control", ip_control);
 		map.put("ip_addr", ip_addr);
 		
-		boolean flag = p_dao.addPersonComm(map);
+		boolean flag = pc_dao.addPersonComm(map);
 		ModelAndView mv = new ModelAndView();
 		String path = null;
 		if(flag)
@@ -83,7 +83,7 @@ public class Person_commControl {
 		map.put("ip_control", ip_control);
 		map.put("ip_addr", ip_addr);
 		
-		boolean flag = p_dao.editPersonComm(map);
+		boolean flag = pc_dao.editPersonComm(map);
 		ModelAndView mv = new ModelAndView();
 		String path = null;
 		if(flag)
@@ -98,7 +98,7 @@ public class Person_commControl {
 	@RequestMapping("personCommDel")
 	public ModelAndView delPersonComm(String person_comm_idx) {
 		
-		boolean flag = p_dao.delPersonComm(person_comm_idx);
+		boolean flag = pc_dao.delPersonComm(person_comm_idx);
 		ModelAndView mv = new ModelAndView();
 		String path = null;
 		if(flag)
@@ -115,7 +115,7 @@ public class Person_commControl {
 	public Map<String, String> getPersonComm(String e_code){
 		Map<String, String> map = new HashMap<String, String>();
 		
-		PersonCommVO pvo = p_dao.getOne(e_code);
+		PersonCommVO pvo = pc_dao.getOne(e_code);
 		if(pvo != null) {
 			map.put("ip_control", pvo.getIp_control());
 			map.put("ip_addr", pvo.getIp_addr());
