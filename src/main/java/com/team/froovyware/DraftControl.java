@@ -1,4 +1,4 @@
-package com.team.froovyware;
+package com.team.groovyware;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

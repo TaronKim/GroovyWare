@@ -1,4 +1,4 @@
-package com.team.froovyware;
+package com.team.groovyware;
 
 import java.util.HashMap;
 import java.util.Map;
