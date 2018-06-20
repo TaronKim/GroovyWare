@@ -1119,10 +1119,9 @@
 			document.empRegistFrm.submit();
 		}		
 		
-		function clo() {				
+		function clo() {			
 			
-				$("#deptSearchPop").hide();
-							
+				$("#deptSearchPop").hide();							
 		}
 			
 	</script>
