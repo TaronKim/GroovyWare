@@ -118,7 +118,7 @@ body {background:#ecedf2;}
 #headerWrap2 {clear:both; min-width:850px; height:50px; background:#31343b;}
 #header2 {position:relative; width:850px;}
 #header .logoarea {float:left; height:50px; }
-#header .logoarea .logo {float:left; padding:10px 26px 0 20px;}
+#header .logoarea .logo {float:left;}
 #header .logoarea .tab1 {float:left; border-left:1px solid #4d4f53; height:50px;}
 #header .logoarea .tab2 {float:left; border-left:1px solid #4d4f53; border-right:1px solid #4d4f53; height:50px;}
 #header .logoarea .tab3 {float:left; border-right:1px solid #4d4f53; height:50px;}
