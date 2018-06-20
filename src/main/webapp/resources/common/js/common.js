@@ -6,7 +6,7 @@ $(function(){
 	    $(obj).keyup(function(){
 	         $(this).val($(this).val().replace(/[^0-9]/g,""));
 	    }); 
-	}
+	};
 	
 	//팝업닫기
 	$(".d_close_pop").click(function(){
@@ -106,10 +106,10 @@ $(function(){
 	});	
 	
 	//등록 팝업 공통이벤트
-	$(".btn_pop").on("click", function(){
+	/*$(".btn_pop").on("click", function(){
 		$(".common_popup").show();
 		$(".pop_layer").show();
-	});
+	});*/
 	
 	//팝업 닫기
 	$(".btn_close").click(function(){
