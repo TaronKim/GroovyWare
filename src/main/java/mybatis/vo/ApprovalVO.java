@@ -3,6 +3,8 @@ package mybatis.vo;
 public class ApprovalVO {
 	private String approval_idx,draft_code,approval_kinds,e_code;
 
+	private DraftVO dvo;
+	
 	public String getApproval_idx() {
 		return approval_idx;
 	}
@@ -34,6 +36,15 @@ public class ApprovalVO {
 	public void setE_code(String e_code) {
 		this.e_code = e_code;
 	}
+
+	public DraftVO getDvo() {
+		return dvo;
+	}
+
+	public void setDvo(DraftVO dvo) {
+		this.dvo = dvo;
+	}
+	
 	
 	
 }

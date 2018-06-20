@@ -119,4 +119,13 @@ public class DraftDAO {
 				
 	}
 	
+	//결재 반려 시
+		public boolean returnApproval(Map<String, String> map) {
+			int cnt = sqlsession.update("approval.returnDraft", map);
+			if(cnt >0)
+				return true;
+			else
+				return false;
+		}
+	
 }

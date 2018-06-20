@@ -3,12 +3,67 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="approval">
-	
+	<resultMap id="approvalMap" type="mybatis.vo.ApprovalVO">
+		<id column="approval_idx" property="approval_idx" />
+		<result column="draft_code" property="draft_code" />
+		<association column="draft_code" property="dvo" select="getDraft"
+			javaType="mybatis.vo.DraftVO" />
+	</resultMap>
+	<resultMap id="draftMap" type="mybatis.vo.DraftVO">
+		<association column="e_code" property="evo" select="getEmp"
+			javaType="mybatis.vo.EmpVO" />
+	</resultMap>
+
 	<!-- 기안등록 -->
 	<insert id="approvalInsert" parameterType="mybatis.vo.ApprovalVO">
-		insert into APPROVAL_T(approval_idx,draft_code,approval_kinds,e_code)
+		insert into
+		APPROVAL_T(approval_idx,draft_code,approval_kinds,e_code)
 		values(approval_seq.NEXTVAL,#{draft_code},'0',#{e_code})
 	</insert>
-	
-	
+
+	<!-- 상태별로 리스트 가져오기 -->
+	<select id="getList" parameterType="java.util.Map" resultMap="approvalMap">
+		SELECT * FROM approval_t WHERE approval_kinds = #{approval_kinds} AND
+		e_code = #{e_code}
+	</select>
+
+	<select id="getDraft" parameterType="String" resultMap="draftMap">
+		SELECT *
+		FROM drafting_paper_t WHERE draft_code = #{draft_code}
+	</select>
+	<select id="getEmp" parameterType="String" resultType="mybatis.vo.EmpVO">
+		SELECT *
+		FROM emp_t WHERE e_code = #{e_code}
+	</select>
+
+	<!-- 결제 값 하나 가져오기 -->
+	<select id="getOne" parameterType="mybatis.vo.ApprovalVO"
+		resultMap="approvalMap">
+		SELECT * FROM approval_t WHERE approval_kinds =
+		#{approval_kinds} AND e_code = #{e_code}
+	</select>
+
+	<!-- 상사에게 문서 전달하고 난 후 결재상태 -->
+	<update id="afterSendApproval" parameterType="mybatis.vo.ApprovalVO">
+		UPDATE approval_t
+		SET approval_kinds = '1'
+		WHERE e_code = #{e_code} AND draft_code =
+		#{draft_code}
+	</update>
+
+	<!-- 최종결재 시 -->
+	<update id="giveApproval" parameterType="mybatis.vo.ApprovalVO">
+		UPDATE drafting_paper_t
+		SET draft_status = '1'
+		WHERE draft_code = #{draft_code} AND e_code=
+		#{e_code}
+	</update>
+
+	<!-- 최종결재 시 -->
+	<update id="returnApproval" parameterType="mybatis.vo.ApprovalVO">
+		UPDATE
+		drafting_paper_t SET draft_status = '2'
+		WHERE draft_code =
+		#{draft_code} AND e_code= #{e_code}
+	</update>
 </mapper>

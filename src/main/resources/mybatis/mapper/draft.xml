@@ -84,4 +84,10 @@
 		where draft_code = #{draft_code}
 	</update>
 	
+	<!-- 최종결재 시 -->
+	<update id="giveApproval" parameterType="java.util.Map">
+		UPDATE drafting_paper_t SET draft_status = '1'
+		WHERE draft_code = #{draft_code} AND e_code= #{e_code}
+	</update>
+	
 </mapper>
