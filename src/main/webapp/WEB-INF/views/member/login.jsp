@@ -59,7 +59,7 @@
          pwd.focus();
          return;
       }
-      document.ff.action = "login.gvy"; 
+      document.ff.action = "index.gvy"; 
       document.ff.submit();
    }
 
