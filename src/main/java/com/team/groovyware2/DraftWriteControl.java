@@ -1,18 +1,26 @@
 package com.team.groovyware2;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,6 +29,7 @@ import mybatis.dao.ApprovalDAO;
 import mybatis.dao.DraftDAO;
 import mybatis.vo.ApprovalVO;
 import mybatis.vo.DraftVO;
+import mybatis.vo.EmpVO;
 import spring.util.FileUploadUtil;
 
 @Controller
@@ -34,9 +43,11 @@ public class DraftWriteControl {
 	@Autowired
 	private DraftDAO draft_dao;
 	
+	private HttpServletResponse response;
+	
 	@Autowired
 	private ServletContext application;
-
+	
 	public void setUploadPath(String uploadPath) {
 		this.uploadPath = uploadPath;
 	}
@@ -156,6 +167,20 @@ public class DraftWriteControl {
 
 		return map;
 	}
+	
+	//기안수정 ajax
+	@RequestMapping("/draft_update.gvy")
+	@ResponseBody
+	public Map<String, DraftVO> draftUpdate(String draft_code) {		
+		DraftVO dvo = draft_dao.draftGet(draft_code);
+	
+		Map<String, DraftVO> map = new HashMap<String, DraftVO>();
+		map.put("draftvo",dvo);
+		
+		return map;		
+	}
+	
+	
 	
 	
 }

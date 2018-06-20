@@ -51,5 +51,22 @@ public class DraftControl {
 		return mv;
 	}
 	
+	//기안 체크박스 선택삭제
+	@RequestMapping("/draft_select_del.gvy")
+	public ModelAndView draftSelectDel(String[] checkDel) {
+		
+		String s = null;
+		for(String str : checkDel) {
+			s = str.toString();
+			boolean check = draft_dao.draftSelectDel(s);
+			boolean chkApproval = draft_dao.approvalDel(s);
+		}
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:draft_regist.gvy");
+		
+		return mv;
+	}
+
 	
 }

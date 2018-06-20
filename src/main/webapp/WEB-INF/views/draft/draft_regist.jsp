@@ -21,6 +21,16 @@
 	<link rel="stylesheet" type="text/css" href="resources/common/css/jquery-ui.css">
 	<!-- //jQuery UI -->
 	
+	<!-- summernote -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.js"></script>
+	<script src="resources/common/js/summernote-ko-KR.js"></script>
+	<!-- //summernote -->
+	<style type="text/css">
+		.note-editor.note-frame .note-editing-area .note-editable{width:916px;}
+		.note-editor .note-editing-area p{word-break: break-all !important;}
+	</style>
+	
 	<style>
 		td.img_none img{display:none;}
 	</style>
@@ -78,9 +88,9 @@
 					<!-- //상단검색 -->
 					
 					<!-- 게시판 영역 -->
-					<div id="emp_table_wrap">
+					<div id="draft_table_wrap">
 						<div class="RadAjaxPanel" id="ctl00_ContentPlaceHolder1_ctl00_ContentPlaceHolder1_RadGridEmployeePanel" style="display: inline;">
-							<form action="emp_select_del.gvy" method="post" name="selectDelFrm">
+							<form action="draft_select_del.gvy" method="post" name="selectDelFrm">
 							<div id="ctl00_ContentPlaceHolder1_RadGridEmployee" class="RadGrid RadGrid_Telerik brd_list2" style="width:100%;" tabindex="0">
 								<div class="rgHeaderWrapper">
 									<div id="ctl00_ContentPlaceHolder1_RadGridEmployee_GridHeader" class="rgHeaderDiv" style="overflow: hidden;">
@@ -129,15 +139,19 @@
 											</tr>
 										</thead>
 										<tbody>
+										
 										<!-- 기안리스트 -->
 										<c:if test="${requestScope.draft_list != null }">
 										
 										<c:forEach items="${requestScope.draft_list }" var="d_list">
 										<tr class="rgRow" id="ctl00_ContentPlaceHolder1_RadGridEmployee_ctl00__0" style="white-space:nowrap;">
 												<td class="col_ct">
-													<input id="ctl00_ContentPlaceHolder1_RadGridEmployee_ctl00_ctl04_chklineSelectCheckBox" class="input_check" type="checkbox" name="checkDel" value="">
+													<input id="ctl00_ContentPlaceHolder1_RadGridEmployee_ctl00_ctl04_chklineSelectCheckBox" class="input_check" type="checkbox" name="checkDel" value="${d_list.draft_code }">
 												</td>
-												<td class="col_ct"><a href="#draftUpdate" class="btn_update" onclick="">${d_list.draft_code }</a></td>
+												<td><a href="#draftUpdate" class="btn_update" onclick="draftUpdate('${d_list.draft_code}')">${d_list.draft_code }</a></td>
+												<c:if test="${sessionScope.mvo.per_level eq '마스터' }">
+												<td>${d_list.draft_code }</td>
+												</c:if>
 												<td>${d_list.draft_title }</td>
 												<td class="col_ct">${d_list.evo.e_name}</td>
 												<td class="col_ct">${fn:substring(d_list.draft_year,0,10) }</td>
@@ -190,7 +204,7 @@
 					
 					
 					<!-- empUpdatePop -->
-					<div id="empUpdate" class="common_popup type3">
+					<div id="draftUpdate" class="common_popup type4">
 						
 						<div class="pop_head">
 							<h2 class="tit">사원 수정</h2>
@@ -200,148 +214,67 @@
 						<div class="pop_wrap">
 							<!-- pop_contents -->
 							<div class="pop_contents">
-								<form action="emp_insert.gvy" method="post" name="empRegistFrm" enctype="multipart/form-data">
-									<input type="hidden" id="isCheck" name="isCheck" value="0">
+								<form action="draft_insert.gvy" method="post" name="draftRegistFrm" enctype="multipart/form-data">
 									<!-- fieldset1 -->
 									<fieldset class="fld_mg30 bx_emp_infor">
-										<div class="thm">
-											<p><img id="photo" style="height:120px;width:120px;"></p>
-										</div>
-										
-										<div class="infor">
-											<table class="brd_write2">
-												<colgroup>
-													<col width="14%">
-													<col width="35%">
-													<col width="16%">
-													<col width="35%">
-												</colgroup>
-												<tbody>
-													<tr>
-														<th>사원번호(*)</th>
-														<td>
-															<span class="telerik_bx inp_btn">
-																<span id="_employeeno_wrapper" class="riSingle RadInput" style="width:160px;">
-																	<input id="e_code" name="e_code" size="20" readonly="readonly" maxlength="5" type="text">
-																</span>
+										<table class="brd_write2">
+											<colgroup>
+												<col width="14%">
+												<col width="35%">
+												<col width="16%">
+												<col width="35%">
+											</colgroup>
+											<tbody>
+												<tr>
+													<th>문서번호(*)</th>
+													<td>
+														<span class="telerik_bx inp_btn">
+															<span id="_employeeno_wrapper" class="riSingle RadInput" style="width:160px;">
+																<input id="draft_code" name="draft_code" readonly="readonly" size="20" type="text" value="">
 															</span>
-														</td>
-														<th>사원명(*)</th>
-														<td>
-															<span class="telerik_bx">
-																<span id="_employeename_wrapper" class="riSingle RadInput" style="width:160px;">
-																	<input id="e_name" name="e_name" size="20" maxlength="200" type="text">
-																</span>
+														</span>
+													</td>
+													<th>기안자(*)</th>
+													<td>
+														<span class="telerik_bx">
+															<span id="_employeename_wrapper" class="riSingle RadInput" style="width:160px;">
+																<input id="e_name" name="e_name" readonly="readonly" size="20" maxlength="200" type="text" value="${sessionScope.mvo.e_name }">
+																<input type="hidden" name="e_code" value="${sessionScope.mvo.e_code }"/>
 															</span>
-														</td>
-													</tr>
-													<tr>
-				                                        <th>급여구분(*)</th>
-				                                        <td>
-				                                            <div class="select_wrap">
-				                                            	<select style="width:258px;" id="sal_type" name="sal_type">
-				                                            		<option value="고정급">고정급</option>
-				                                            		<option value="변동급">변동급</option>
-				                                            	</select>
-				                                            </div>
-			                                      		</td>
-														<th>주민등록번호(*)</th>
-														<td>
-															<span class="telerik_bx inp_jumin">
-																<span id="_socialno01_wrapper" class="riSingle RadInput" style="width:160px;">
-																	<input id="s_num" name="s_num_ar" class="s_num1" size="20" maxlength="20" type="text" style="width:80px;">
-																	
-																</span> -
-																<span id="_socialno02_wrapper" class="riSingle RadInput" style="width:160px;">
-																	<input name="s_num_ar" class="s_num2" size="20" maxlength="20" type="text" style="width:80px;">
-																</span>
+														</span>
+													</td>
+												</tr>
+												<tr>
+			                                        <!-- <th>기안부서</th>
+													<td>
+														<span class="telerik_bx">
+															<span id="_major_wrapper" class="riSingle RadInput" style="width:160px;">
+																<input id="major" name="major" size="20" type="text">
 															</span>
-														</td>
-													</tr>		
-													<tr>
-				                                        <th>결혼여부</th>
-														<td>
-															<div class="select_wrap">
-				                                            	<select style="width:258px;" name="marry_status">
-				                                            		<option vlaue="기혼">기혼</option>
-				                                            		<option value="미혼">미혼</option>
-				                                            	</select>
-				                                            </div>
-														</td>
-														<th>최종학교</th>
-														<td>
-															<span class="telerik_bx">
-																<span id="_schoolname_wrapper" class="riSingle RadInput" style="width:160px;">
-																	<input id="school_name" name="school_name" size="20" type="text">
-																</span>
+														</span>
+													</td> -->
+													<th>결재자(할당자)</th>
+													<td>
+														<div class="select_wrap">
+															<input id="select_approval" name="e_code_approval" readonly="readonly" size="20" maxlength="200" type="text" value="">
+			                                            	<!-- <select style="width:258px;" id="select_approval" name="e_code_approval">
+			                                            		<option selected="selected">결재자를 선택해주세요.</option>
+			                                            	</select> -->
+			                                            </div>
+													</td>
+												</tr>
+												<tr>
+			                                        <th>문서제목</th>
+													<td colspan="3">
+														<span class="telerik_bx">
+															<span id="_cellphoneno_wrapper" class="riSingle RadInput" style="width:160px;">
+																<input id="draft_title" name="draft_title" readonly="readonly" size="20" type="text">
 															</span>
-														</td>
-													</tr>
-													<tr>
-				                                        <th>전공</th>
-														<td>
-															<span class="telerik_bx">
-																<span id="_major_wrapper" class="riSingle RadInput" style="width:160px;">
-																	<input id="major" name="major" size="20" type="text">
-																</span>
-															</span>
-														</td>
-														<th>전화번호</th>
-														<td>
-															<span class="telerik_bx">
-																<span id="_phoneno_wrapper" class="riSingle RadInput" style="width:160px;">
-																	<input id="e_phone" name="e_phone" size="20" type="text" value="">
-																</span>
-															</span>
-														</td>
-													</tr>
-													<tr>
-				                                        <th>핸드폰</th>
-														<td>
-															<span class="telerik_bx">
-																<span id="_cellphoneno_wrapper" class="riSingle RadInput" style="width:160px;">
-																	<input id="e_cellphone" name="e_cellphone" size="20" type="text">
-																</span>
-															</span>
-														</td>
-														<th>이메일</th>
-														<td>
-															<span class="telerik_bx">
-																<div class="RadAjaxPanel" id="_emailPanel" style="display: inline;">
-																	<span id="_email_wrapper" class="riSingle RadInput" style="width:160px;">
-																		<input id="e_email" name="e_email_ar" size="20" type="text" style="width:100px;">
-																		@
-																		<input name="e_email_ar" size="20" type="text" style="width:100px;">
-																	</span>
-																</div>
-															</span>
-														</td>
-													</tr>
-													<tr>
-														<th>주소</th>
-														<td colspan="3">
-															<span class="telerik_bx telerik_post">
-																<span class="post_tit">우편번호</span>
-																<span class="post_num">
-																	<span id="_zipcode_wrapper" class="riSingle RadInput" style="width:160px;">
-																		<input id="e_post" name="e_post" readonly="readonly" size="20" type="text" style="width:160px !important;">
-																		<!-- <button type="button" class="ruButton ruBrowse" style="cursor:pointer;line-height:30px;">찾기</button> -->
-																		<div class="ic_search_wrap">
-																			<a href="#" class="btn_check" onclick="daumPostCode()">찾기</a>
-																		</div>
-																	</span>
-																</span>
-																<span class="post_add">
-																	<span id="_address_wrapper" class="riSingle RadInput" style="width:160px;">
-																		<input id="e_addr" name="e_addr" size="20" type="text">
-																	</span>
-																</span>
-															</span>
-														</td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
+														</span>
+													</td>
+												</tr>
+											</tbody>
+										</table>
 									</fieldset>
 									<!-- //fieldset1 -->
 									
@@ -349,179 +282,49 @@
 									<fieldset>
 										<table class="brd_write2">
 											<colgroup>
-												<col width="10%">
-												<col width="22%">
-												<col width="13%">
-												<col width="22%">
-												<col width="11%">
-												<col width="22%">
+												<col width="14%">
+												<col width="35%">
+												<col width="16%">
+												<col width="35%">
 											</colgroup>
 											<tbody>
 												<tr>
-													<th>입사일(*)</th>
-													<td>
-														<input type="text" name="hire_date" class="myDatePicker hire_date"/>
-													</td>	
-													
-													<th>부서</th>
-													<td>
-														<span class="telerik_bx inp_btn">
-															<div class="RadAjaxPanel" id="_departmentcodePanel" style="width: 131px; padding-right: 36px; display: inline;">
-																<div id="_departmentcode" class="RadAutoCompleteBox RadAutoCompleteBox_Windows7">
-																	<div class="racTokenList">
-																		<input type="text" class="racInput radPreventDecorate" name="dept_name" id="dept_name" autocomplete="off" readonly="readonly">
-																		<input type="hidden" id="dept_code" name="dept_code" value=""/>
-																	</div>
-																</div>
-															</div>
-															
-															<div class="ic_search_wrap">
-																<a href="#deptSearchPop" id="deptFind" class="ic_search d_open">찾기</a>
-															</div>
-														</span>
-													</td>
-													
-													<th>직급</th>
-													<td>
-														<span class="telerik_bx inp_btn">
-															<div class="RadAjaxPanel" id="_positionPanel" style="width: 131px; padding-right: 36px; display: inline;">
-																<div id="_position" class="RadAutoCompleteBox RadAutoCompleteBox_Windows7">
-																	<div class="racTokenList">
-																		<input class="racInput radPreventDecorate" name="pos_name" type="text" id="pos_name" autocomplete="off" readonly="readonly">
-																		<input type="hidden" id="pos_code" name="pos_code" value=""/>
-																	</div>
-																</div>
-															</div>
-											
-															<div class="ic_search_wrap">
-																<a href="#positionSearch" id="positionFind" class="ic_search d_open">찾기</a>
-															</div>
-														</span>
-													</td>
-												</tr>
-												
-												<tr>
-													<th>직책</th>
-													<td>
-														<span class="telerik_bx inp_btn">
-															<div class="RadAjaxPanel" id="_jobtitlePanel" style="width: 132px; padding-right: 36px; display: inline;">
-																<div id="_jobtitle" class="RadAutoCompleteBox RadAutoCompleteBox_Windows7">
-																	<div class="racTokenList">
-																		<input class="racInput radPreventDecorate" name="duty_name" type="text" id="duty_name" autocomplete="off" readonly="readonly">
-																		<input type="hidden" id="duty_code" name="duty_code" value=""/>
-																	</div>
-																</div>
-															</div>
-												
-															<div class="ic_search_wrap">
-																<a href="#dutySearchPop" id="dutyFind" class="ic_search d_open">찾기</a>
-															</div>
-														</span>
-													</td>
-													<th>은행명(급여)</th>
-													<td>
-														<span class="telerik_bx">
-															<span id="_bankname_wrapper" class="riSingle RadInput" style="width:160px;">
-																<input id="bank_name" name="bank_name" size="20" type="text">
-															</span>
-														</span>
-													</td>
-													<th>계좌(급여)</th>
-													<td>
-														<span class="telerik_bx">
-															<span id="_bankaccount_wrapper" class="riSingle RadInput" style="width:160px;">
-																<input id="account" name="account" size="20" type="text">
-															</span>
-														</span>
-													</td>
-												</tr>
-												<tr>
-													<th>예금주</th>
-													<td>
-														<span class="telerik_bx">
-															<span id="_depositname_wrapper" class="riSingle RadInput" style="width:160px;">
-																<input id="acc_name" name="acc_name" size="20" type="text">
-															</span>
-														</span>
-													</td>
-													<th>퇴사일자</th>
-													<td>
-														<input type="text" name="resign_date" class="myDatePicker"/>
-													</td>
-													
-													<th>퇴사사유</th>
-													<td>
-														<span class="telerik_bx">
-															<span id="_resignreason_wrapper" class="riSingle RadInput" style="width:160px;">
-																<input id="resign_reason" name="resign_reason" size="20" type="text">
-															</span>
-														</span>
-													</td>
-												</tr>
-												
-												<tr>
-													<th>사진</th>
-													<td colspan="5">
-														<div id="_photofiles" class="RadUpload RadUpload_">
-															<ul id="_photofilesListContainer" class="ruInputs">
-																<li>
-																	<span class="ruFileWrap ruStyled mr">
-																		<input type="file" name="upload2" id="_photofilesfile0" size="23" class="ruFileInput" style="width:625px;left:0;" onchange="photoName(this)" >
-																		<input type="text" class="ruFakeInput" id="photoFileText" size="22">
-																		<input type="button" value="찾아보기" class="ruButton ruBrowse">
-																	</span>
-																	<input type="button" id="_photofilesclear0" value="삭제" class="ruButton ruClear" name="ClearInput">
-																</li>
-															</ul>
-														</div>
-													</td>
+													<th style="display:none">내용</th>
+													<td colspan="4"><textarea id="draft_content" name="draft_content" cols="50" rows="8"></textarea></td>
 												</tr>
 												
 												<tr>
 													<th>첨부파일</th>
-													<td colspan="5">
-														<span class="telerik_bx">
+													<td colspan="3">
+														<div class="telerik_bx">
 															<div id="_files" class="RadUpload RadUpload_">
 																<ul id="_filesListContainer" class="ruInputs">
 																	<li>
 																		<span class="ruFileWrap ruStyled mr">
-																			<input type="file" name="upload" id="upload1" size="23" class="ruFileInput" style="width:625px;left:0;" onchange="fileName(this)" >
-																			<input type="text" class="ruFakeInput" id="fileNameText" size="22">
-																			<input type="button" value="찾아보기" class="ruButton ruBrowse">
+																			<!-- <input type="file" name="upload" size="23" class="ruFileInput" style="width:625px;left:0;" onchange="fileName(this)" > -->
+																			<input type="text" class="ruFakeInput" id="fileNameText" size="22" readonly="readonly" style="cursor:pointer;">
+																			<!-- <input type="button" value="찾아보기" class="ruButton ruBrowse"> -->
 																		</span>
-																		<input type="button" id="_filesclear0" value="삭제" class="ruButton ruClear" name="ClearInput">
 																	</li>
 																</ul>
 															</div>
-															<!-- <div id="FileAttacherToolTip" style="display:none;position:absolute;">
-											    				<span id="RadToolTip99">* docx,xlsx,pdf,pptx,hwp,xls만 등록이 가능합니다.<br>* 5MB 이하의 파일만 첨부 가능합니다.<br>* 파일명에 ~`!@#$%^&amp;*=+\|;:'&lt;,&gt;/? 는 들어갈 수 없습니다.</span>
-																<input id="FileAttacherToolTip_ClientState" name="FileAttacherToolTip_ClientState" type="hidden" autocomplete="off">
-															</div> -->
-														</span>
+														</div>
 													</td>
 												</tr>
-												<!-- <tr>
-													<th>비고</th>
-													<td colspan="5">
-														<span class="telerik_bx">
-															<span id="_memo_wrapper" class="riSingle RadInput" style="width:160px;">
-																<textarea id="_memo" name="_memo" rows="2" cols="20" style="height:50px;" maxlength="300"></textarea>
-																<input id="_memo_ClientState" name="_memo_ClientState" type="hidden" autocomplete="off" value="">
-															</span>
-														</span>
-													</td>
-												</tr> -->
 											</tbody>
 										</table>
 									</fieldset>
 									<!-- fieldset2 -->
 								</form>
-								
-								
-								<div class="btn_area">
-									<button type="button" class="btn_style small" onclick="empUpdateMody()">수정</button>
-									<button type="button" class="btn_style small d_close">닫기</button>
-								</div>
+							</div>
+							<!-- //pop_contents -->
+							
+							<!-- 등록버튼 -->
+							<div class="btn_area">
+								<!-- <button type="button" class="btn_style small" onclick="draftUpdateMody()">수정</button> -->
+								<button type="button" class="btn_style small d_close">닫기</button>
+							</div>
+							<!-- //등록버튼 -->
 							</div>
 							<!-- //pop_contents -->
 						</div>
@@ -538,6 +341,71 @@
 	<!-- //wrap -->
 	
 	<script type="text/javascript">
+	$(function(){
+		
+		$('#draft_content').summernote({
+	        //placeholder: 'Hello stand alone ui',
+	        tabsize: 2,
+	        height: 300,
+//	        width: 550,
+	        maxHeight: 400,
+			minHeight: 200,
+			focus: true,
+			lang: 'ko-KR',
+			callbacks:{
+				onImageUpload : function(files, editor, welEdit){
+					//console.log('img upload: ', files);
+					//이미지를 첨부하면 배열로 인식된다.
+					//이것을 서버로 비동기식 통신을 하는 
+					//함수를 호출하면서 보낸다.
+					sendFile(files[0], editor, welEdit);
+				}
+			}
+	    });
+		
+		$('#draft_content').summernote('lineHeight', 1.5);
+	});
+
+	function sendFile(file, editor, welEdit){
+		//파라미터를 전달하기 위해 form객체 만든다.
+		var frm = new FormData();
+		
+		//위의 frm객체에 send_img이라는 파라미터를 지정!
+		frm.append("send_img", file);
+		//frm.append("type", "saveImg");
+		
+		//비동기식 통신
+		$.ajax({
+			url:"draft_image.gvy",
+			data: frm,
+			//data:param,
+			cache: false,
+			contentType: false,
+			processData: false,
+			type: "POST",
+			dataType: "JSON" //나중 받을 데이터의 형식을 지정
+		}).done(function(data){
+			//도착함수
+			//alert(data.url);
+			
+			//에디터에 img태그로 저장하기 위해 
+			//다음과 같이 img태그를 정의한다.
+			//var image = $('<img>').attr('src',data.url);
+			
+			//에디터에 정의한 img태그를 보여준다.
+			//$('#content').summernote('insertNode',image[0]);
+			
+			$('#draft_content').summernote(
+					'editor.insertImage',data.url);
+			
+		}).fail(function(e){
+			console.log(e);
+		});
+	}	
+	
+	
+	
+	
 		$(function(){
 
 			$('.myDatePicker').val($.datepicker.formatDate('yy-mm-dd', new Date()));
@@ -553,7 +421,7 @@
 
 		//사원 선택삭제
 		function selectDel(){
-			if($("#emp_table_wrap input:checkbox").is(":checked") == false){
+			if($("#draft_table_wrap input:checkbox").is(":checked") == false){
 				alert("선택된 값이 없습니다.")
 				return;
 			}
@@ -561,13 +429,47 @@
 			document.selectDelFrm.submit();
 		}
 		
-
-	    window.onload = function(){
-	       <c:if test ="${sessionScope.mvo eq null}">
-	          window.location.href = "login.gvy";
-	       </c:if>
-	    };
-
+		
+		//기안view ajax
+		function draftUpdate(draft_code){
+			
+			$.ajax({
+				type : "POST",
+				url : "draft_update.gvy",
+				data : "draft_code="+draft_code,
+			}).done(function(res) { 								
+				
+				$("#draft_code").val(res.draftvo.draft_code);
+				$("#e_name").val(res.draftvo.evo.e_name);
+				//$("#select_approval").val(res.draftvo.avo_list.evo.e_name);
+				$("#draft_title").val(res.draftvo.draft_title);
+				$(".note-editable").html(res.draftvo.draft_content);
+				$(".note-editable p").attr("disabled",true);
+				$("#fileNameText").val(res.draftvo.draft_file_name);
+			});		
+			
+			
+		}
+		
+		//첨부파일 input:text value
+		function fileName(fis){
+			
+			//alert(fis.value);
+			var f_path = fis.value;
+			var idx = f_path.lastIndexOf("\\")+1;
+			var f_name = f_path.substring(idx);
+			$("#fileNameText").val(f_name);
+		}
+		
+		$("#fileNameText").click(function(){
+			var fname = $(this).val();
+			//alert(fname);
+			
+			location.href = "FileDownload?fname="+encodeURIComponent(fname);
+			
+		});
+		
+		
 	</script>
 </body>
 </html>

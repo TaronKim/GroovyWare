@@ -1,5 +1,7 @@
 package mybatis.vo;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class DraftVO {
@@ -11,11 +13,25 @@ public class DraftVO {
 					draft_file_name,
 					draft_ori_name,
 					draft_status;//기안상태
+
 	
 	private String e_code_approval;//결재자의 e_code
 	
 	private String draft_write_year;
 
+	private List<ApprovalVO> avo_list;
+	private EmpVO evo;
+	
+	
+	private MultipartFile upload;
+	
+	public List<ApprovalVO> getAvo_list() {
+		return avo_list;
+	}
+
+	public void setAvo_list(List<ApprovalVO> avo_list) {
+		this.avo_list = avo_list;
+	}
 
 	public String getDraft_write_year() {
 		return draft_write_year;
@@ -24,10 +40,6 @@ public class DraftVO {
 	public void setDraft_write_year(String draft_write_year) {
 		this.draft_write_year = draft_write_year;
 	}
-
-	private EmpVO evo;
-	
-	private MultipartFile upload;
 
 	public String getE_code_approval() {
 		return e_code_approval;

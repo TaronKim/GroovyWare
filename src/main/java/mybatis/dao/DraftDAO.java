@@ -77,6 +77,46 @@ public class DraftDAO {
 		return dvo;
 	}
 	
+	//기안 체크박스 선택삭제
+	public boolean draftSelectDel(String checkDel) {
+		
+		boolean check = false;
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("draft_code", checkDel);
+		
+		int cnt = sqlsession.delete("draft.draftCheckDel",map);
+		
+		if(cnt > 0) {
+			check = true;
+		}
+		
+		return check;
+		
+	}
 	
+	
+	public boolean approvalDel(String checkDel) {
+		
+		boolean check = false;
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("draft_code", checkDel);
+		
+		int cnt = sqlsession.delete("draft.approvalCheckDel",map);
+		
+		if(cnt > 0) {
+			check = true;
+		}
+		
+		return check;
+		
+	}
+
+	
+	//draft_code를 가져와 사원정보를 얻는다.
+	public DraftVO draftGet(String draft_code) {
+		DraftVO dvo = sqlsession.selectOne("draft.draftGet", draft_code);
+		return dvo;
+				
+	}
 	
 }
