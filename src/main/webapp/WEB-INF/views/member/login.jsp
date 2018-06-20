@@ -103,8 +103,7 @@
 	}
 
 	//회원가입  회사 아이디 체크
-	function checkCID() {
-		
+	function checkCID() {		
 
 		var c_id = $("#_companyIdOD").val();
 		if (c_id.length > 3) {
@@ -232,7 +231,7 @@
 
 			<!-- 상단 홈페이지 -->
 			<div class="homepage_link">
-				<a href="https://www.genieaccount.com/" target="_blank">홈페이지</a>
+				<a href="https://www.genieaccount.com/" target="_blank"></a>
 			</div>
 
 
@@ -294,7 +293,7 @@
 										<span id="RadButton1"
 											class="RadButton RadButton_Telerik rbSkinnedButton">
 											 <input class="rbDecorated" type="button" name="RadButton1"
-											id="RadButton1_input" value="비밀번호 찾기" onclick='findpw()'>
+											id="RadButton1_input" value="" onclick='findpw()'>
 
 										</span>
 									</div>
@@ -329,8 +328,7 @@
 										name="_companyIdOD" size="20" class="riTextBox riEnabled"
 										placeholder="Company Code" type="text" value=""
 										onkeyup="checkCID()"  />
-										  <span class="chk_area" id="cid_res">  
-										 </span>	
+										<span class="chk_area" id="cid_res"></span>	
 										</span>
 										 <span id="RequiredFieldValidator4" style="display: none;"></span>
 									</dd>
