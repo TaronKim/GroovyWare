@@ -1,6 +1,7 @@
 package spring.util;
 
 import mybatis.vo.DeptVO;
+import mybatis.vo.DraftVO;
 import mybatis.vo.DutyVO;
 import mybatis.vo.PositionVO;
 
@@ -87,6 +88,39 @@ public class DataList {
 		}else {
 			sb.append("<tr>");
 			sb.append("<td colspan='3' style='text-align:center'>");
+			sb.append("등록된 값이 없습니다.");
+			sb.append("</td>");
+			sb.append("</tr>");
+		}
+		
+		return sb;
+	}
+	
+	//메인 기안상신 ajax
+	public StringBuffer getDraftHtml(DraftVO[] draft_list) {
+		
+		sb = new StringBuffer();
+		
+		if(draft_list != null) {
+			for(DraftVO draftvo : draft_list) {
+				sb.append("<tr class='rgNoRecords'>");
+				sb.append("<td>");
+				sb.append(draftvo.getDraft_code());
+				sb.append("</td>");
+				sb.append("<td>");
+				sb.append(draftvo.getDraft_title());
+				sb.append("</td>");
+				sb.append("<td>");
+				sb.append(draftvo.getEvo().getE_name());
+				sb.append("</td>");
+				sb.append("<td>");
+				sb.append(draftvo.getDraft_write_year());
+				sb.append("</td>");
+				sb.append("</tr>");
+			}
+		}else {
+			sb.append("<tr>");
+			sb.append("<td colspan='4' style='text-align:center'>");
 			sb.append("등록된 값이 없습니다.");
 			sb.append("</td>");
 			sb.append("</tr>");

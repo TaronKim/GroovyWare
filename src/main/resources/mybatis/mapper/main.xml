@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="main">
+	
+	<resultMap type="mybatis.vo.DraftVO" id="mainMap">
+		<association property="evo" javaType="mybatis.vo.EmpVO" select="empDraft" column="e_code" />
+	</resultMap>
+	
+	<select id="empDraft" parameterType="String" resultType="mybatis.vo.EmpVO">
+		select * from emp_t
+		where e_code = #{e_code}
+	</select>
+	
+	<!-- 부서검색 -->
+	<select id="selectDraft" parameterType="java.util.Map" resultType="mainMap">
+		select * from draft_paper_t
+		where draft_status = '0'
+		<if test="deptSearch != null">
+			and dept_name like '%'||#{deptSearch}||'%'
+		</if>
+		<if test="draft_write_year != null">
+			and draft_year <![CDATA[ <= ]]> #{draft_write_year}
+		</if>
+	</select>
+	
+</mapper>
