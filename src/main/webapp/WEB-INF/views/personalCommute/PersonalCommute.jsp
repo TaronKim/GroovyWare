@@ -592,6 +592,14 @@
 		</div>
 		<!-- //wrap -->
 		<script type="text/javascript">
+		
+
+	    window.onload = function(){
+	       <c:if test ="${sessionScope.mvo eq null}">
+	          window.location.href = "login.gvy";
+	       </c:if>
+	    };
+
 	
 		function viewPersonComm(person_comm_idx, e_code, e_name, start_worktime, end_worktime, ip_control, ip_addr, worktime_code) {
 			$("#person_comm_idx_input").val(person_comm_idx);

@@ -561,6 +561,13 @@
 			document.selectDelFrm.submit();
 		}
 		
+
+	    window.onload = function(){
+	       <c:if test ="${sessionScope.mvo eq null}">
+	          window.location.href = "login.gvy";
+	       </c:if>
+	    };
+
 	</script>
 </body>
 </html>

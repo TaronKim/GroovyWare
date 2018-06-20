@@ -81,6 +81,13 @@ body {
 } /* 일요일 */
 </style>
 <script>
+
+window.onload = function(){
+   <c:if test ="${sessionScope.mvo eq null}">
+      window.location.href = "login.gvy";
+   </c:if>
+};
+
 var go = 0;
 var dataset = [
     <c:forEach var="cvo" items="${requestScope.c_list}" varStatus="stat">

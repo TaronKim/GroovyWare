@@ -18,6 +18,14 @@
 	<script src="resources/common/js/common.js"></script>
 	<script src="resources/common/js/jquery-3.3.1.min.js"></script>
 	<script src="resources/common/js/jquery-ui.min.js"></script>
+	
+<script type="text/javascript">
+window.onload = function(){
+	   <c:if test ="${sessionScope.mvo eq null}">
+	      window.location.href = "login.gvy";
+	   </c:if>
+	};
+</script>	
 </head>
 <body>
 	<!-- wrap -->

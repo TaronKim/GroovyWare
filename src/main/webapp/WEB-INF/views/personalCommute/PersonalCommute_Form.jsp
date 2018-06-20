@@ -252,6 +252,14 @@
 	</div>
 	<!-- //wrap -->
 	<script type="text/javascript">
+
+	   window.onload = function(){
+	      <c:if test ="${sessionScope.mvo eq null}">
+	         window.location.href = "login.gvy";
+	      </c:if>
+	   };
+
+	
 		function trClick(e_code,e_name){
 			$("#_empname_Input").val(e_name);
 			$("#_empcode_Input").val(e_code);

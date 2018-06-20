@@ -129,7 +129,7 @@
 	
 	<script type="text/javascript">
 	
-	<script type="text/javascript">
+
     window.onload = function(){
        <c:if test ="${sessionScope.mvo eq null}">
           window.location.href = "login.gvy";

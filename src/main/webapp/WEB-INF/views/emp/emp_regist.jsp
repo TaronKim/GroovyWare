@@ -806,12 +806,6 @@
 	
 	<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 	<script>
-	<script type="text/javascript">
-    window.onload = function(){
-       <c:if test ="${sessionScope.mvo eq null}">
-          window.location.href = "login.gvy";
-       </c:if>
-    };
 
 	
 	
@@ -1126,6 +1120,14 @@
 			document.empRegistFrm.action = "empupdate.gvy"; 
 			document.empRegistFrm.submit();
 		}		
+		
+
+	    window.onload = function(){
+	       <c:if test ="${sessionScope.mvo eq null}">
+	          window.location.href = "login.gvy";
+	       </c:if>
+	    };
+
 	</script>
 </body>
 </html>
