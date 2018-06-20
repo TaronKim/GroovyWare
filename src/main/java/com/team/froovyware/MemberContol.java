@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import mybatis.dao.EmpDAO;
 import mybatis.dao.MemDAO;
+import mybatis.vo.EmpVO;
 import mybatis.vo.MemVO;
 
 
@@ -25,8 +26,8 @@ public class MemberContol {
 	@Autowired
 	private MemDAO m_dao;	
 	
-	//@Autowired
-	//private EmpDAO e_dao;
+	@Autowired
+	private EmpDAO e_dao;
 	
 	@Autowired
 	private HttpSession session;
@@ -37,6 +38,7 @@ public class MemberContol {
 	public String index() {
 		return "member/index";
 	}
+	
 	
 	//로그인 화면으로 이동
 	@RequestMapping("/login.gvy") //get방식
@@ -59,11 +61,23 @@ public class MemberContol {
 			if(mvo != null) {
 				//세션처리
 				session.setAttribute("mvo", mvo);				
-				return "member/reset_pwd"; 
+				return "member/index"; 
 			}else {
 				return "member/login";
 			}				
 	}
+	//로그아웃
+	@RequestMapping("logout.gvy")
+	   public ModelAndView logout() {
+	      
+	      session.removeAttribute("mvo");
+	      
+	      ModelAndView mv = new ModelAndView();
+	      mv.setViewName("member/login");
+	      
+	      return mv;
+	   }
+	
 
 
 	//비밀번호변경 화면으로 이동

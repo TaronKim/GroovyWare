@@ -49,17 +49,11 @@
                                 </ul>
                             </li>
                             <li>
-                                <span>사원정보</span>
+                                <span>사원정보관리</span>
                                 <ul style="display: none;">
                                     <li><a href="javascript:location.href='emp_regist.gvy'">사원 등록</a></li>
                                 </ul>
-                            </li>
-                            <li>
-                                <span>부서정보</span>
-                                <ul style="display: none;">
-                                    <li><a href="javascript:location.href='dept_regist.gvy'">부서 등록</a></li>
-                                </ul>
-                            </li>
+                            </li> 
 						</ul>
 					</li>
 					<li>
@@ -68,13 +62,13 @@
 	                        <li>
 	                            <span>출·퇴근 기록</span>
 	                            <ul style="display: none;">
-	                                <li><a href="/Groupware/TimeRecord/TimeEmployeeRecord.aspx?topmenu=5&amp;submenu=3&amp;current=1">개인별 출·퇴근 기록</a></li>
+	                                <li><a href="javascript:location.href='commuteCal.gvy'">개인별 출·퇴근 기록</a></li>
 	                            </ul>
 	                        </li>     
 	                        <li>
 	                            <span>출·퇴근 관리</span>
 	                            <ul style="display: none;">
-	                                <li><a href="/Groupware/TimeRecord/TimeRecordSetupList.aspx?topmenu=5&amp;submenu=6&amp;current=1">개인별 출·퇴근 설정</a></li>
+	                                <li><a href="javascript:location.href='personComm.gvy'">개인별 출·퇴근 설정</a></li>
 	                                <li><a href="/Groupware/TimeRecord/TimeRecordView.aspx?topmenu=5&amp;submenu=6&amp;current=2">출·퇴근 현황</a></li>
 	                                <li><a href="/Groupware/TimeRecord/TimeDelayView.aspx?topmenu=5&amp;submenu=6&amp;current=3">지각 현황</a></li>
 	                            </ul>
@@ -84,7 +78,7 @@
                     <li>
                         <span>환경설정</span>
                         <ul style="display: none;">
-                            <li><span><a href="/Groupware/Configuration/UserAccessList.aspx?topmenu=6&amp;submenu=1">권한설정</a></span></li>      
+                            <li><span><a href="javascript:location.href='list.gvy'">권한설정</a></span></li>
                         </ul>
                     </li>
 				</ul>
