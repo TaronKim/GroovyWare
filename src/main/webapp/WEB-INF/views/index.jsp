@@ -14,10 +14,13 @@
 	<link rel="stylesheet" type="text/css" href="resources/common/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="resources/common/css/common.css">
 	<link rel="stylesheet" type="text/css" href="resources/common/css/jquery-ui.css">
-	<script src="resources/common/js/jquery-1.9.1.min.js"></script>
-	<script src="resources/common/js/common.js"></script>
 	<script src="resources/common/js/jquery-3.3.1.min.js"></script>
+	<script src="resources/common/js/common.js"></script>
+	
+	<!-- jQuery UI -->
 	<script src="resources/common/js/jquery-ui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="resources/common/css/jquery-ui.css">
+	<!-- //jQuery UI -->
 	
 <script type="text/javascript">
 window.onload = function(){
@@ -33,7 +36,7 @@ window.onload = function(){
 	<%@ include file="commons/header.jsp" %>
 		<div id="container">
 		<!--Contents-->
-			<div id="contents">
+			<div id="contents" style="min-height:700px;">
 			<div id="ctl00_RadSplitter1" class="telerik_rad_splitter" style="height: 400px; width: 1280px;">
 			<table id="RAD_SPLITTER_ctl00_RadSplitter1" class="RadSplitter RadSplitter_Telerik" style="width:1px;height:1px;border-left-width:1px;border-top-width:1px;">
 			<tbody>
@@ -42,7 +45,7 @@ window.onload = function(){
 			<div id="RAD_SPLITTER_PANE_CONTENT_ctl00_RadPane2" style="width: 1278px; height: 398px; overflow: auto;">       
 		
 		    <!-- mainWrap -->
-		    <div id="mainWrap">
+		    <div id="mainWrap" style="background:none;">
 		        <div class="main_top">
 		            <div class="main_top_docing">
 		                <div class="main_top_docing_tit">
@@ -51,7 +54,7 @@ window.onload = function(){
 		                      		  진행문서
 		                    </div>
 		                    <div class="more">
-		                        <a href="/Groupware/Approval/DocumentNoApproval.aspx">
+		                        <a href="#">
 		                       <img src="resources/images/main_dot_more.gif" alt="more">
 		                       </a>
 		                    </div>
@@ -81,7 +84,8 @@ window.onload = function(){
 		                    </tbody>
 		                    </table>
 		                </div>
-		            </div>         
+		            </div> 
+		            <div class="main_top_img" style="overflow:hidden;background:none;"><img alt="main" width="1000" height="auto" src="resources/images/main_bg.jpg"></div>        
 		        </div>
 		        
 				<div class="main_body">
@@ -92,7 +96,7 @@ window.onload = function(){
 					 일정
 					</div>
 					<div class="more">
-					<a href="/Groupware/Scheduler/SchedulerManagement.aspx">
+					<a href="#">
 					<img src="resources/images/main_dot_more.gif" alt="more"></a>
 					</div>
 					</div>
@@ -145,7 +149,7 @@ window.onload = function(){
 	                   <div class="main_right_sign_more">
 	                       <div class="layer">
 	                           <span id="ctl00_ContentPlaceHolder1_btnMoveto" class="RadButton RadButton_ rbSkinnedButton more_btn" tabindex="0">
-	                          <a href="/Groupware/Board/FreeBoardList.aspx">
+	                          <a href="#">
 							<img src="resources/images/main_dot_more.gif" alt="more">
 							</a> 
 	                           <input class="rbDecorated" type="submit" name="ctl00$ContentPlaceHolder1$btnMoveto" id="ctl00_ContentPlaceHolder1_btnMoveto_input" value="" tabindex="-1">
@@ -159,7 +163,7 @@ window.onload = function(){
 							<a class="rtsLink rtsSelected" href="#">
 							<span class="rtsOut">
 							<span class="rtsIn">
-							<span class="rtsTxt">미결함</span>
+							<span class="rtsTxt">기안상신함</span>
 							</span>
 							</span>
 							</a>
@@ -168,7 +172,7 @@ window.onload = function(){
 							<a class="rtsLink rtsAfter" href="#">
 							<span class="rtsOut">
 							<span class="rtsIn">
-							<span class="rtsTxt">기안 상신함</span>
+							<span class="rtsTxt">미결함</span>
 							</span>
 							</span>
 							</a>
@@ -191,16 +195,16 @@ window.onload = function(){
 					<table class="rgMasterTable rgClipCells" id="ctl00_ContentPlaceHolder1_RadGridApproval_ctl00_Header" style="width:100%;table-layout:fixed;overflow:hidden;empty-cells:show;">
 						<colgroup>
 						<col style="width:20%">
-						<col style="width:15%">
-						<col style="width:15%">
 						<col style="width:50%">
+						<col style="width:15%">
+						<col style="width:15%">
 						</colgroup>
 						<thead>
 						<tr>
-						<th scope="col" class="rgHeader" style="white-space:nowrap;">문서종류</th>
-						<th scope="col" class="rgHeader" style="white-space:nowrap;">신청일</th>
-						<th scope="col" class="rgHeader" style="white-space:nowrap;">작성자</th>
+						<th scope="col" class="rgHeader" style="white-space:nowrap;">문서번호</th>
 						<th scope="col" class="rgHeader" style="white-space:nowrap;">제목</th>
+						<th scope="col" class="rgHeader" style="white-space:nowrap;">작성자</th>
+						<th scope="col" class="rgHeader" style="white-space:nowrap;">기안일자</th>
 						</tr>
 						</thead>
 						<tbody style="display:none;">
@@ -216,9 +220,9 @@ window.onload = function(){
 					<table class="rgMasterTable rgClipCells" id="ctl00_ContentPlaceHolder1_RadGridApproval_ctl00" style="width: 968px; table-layout: fixed; overflow: hidden; empty-cells: show;">
 					<colgroup>
 					<col style="width:20%">
-					<col style="width:15%">
-					<col style="width:15%">
 					<col style="width:50%">
+					<col style="width:15%">
+					<col style="width:15%">
 					</colgroup>
 					<thead style="display:none;">
 					<tr>
@@ -227,9 +231,8 @@ window.onload = function(){
 					</thead>
 					<tbody>
 					<tr class="rgNoRecords">
-					<td colspan="4" style="text-align:left;">
-					<div>
-					</div>
+					<td id="draft_list_ajax" colspan="4" style="text-align:left;height:179px;">
+						
 					</td>
 					</tr>
 					</tbody>
@@ -247,7 +250,7 @@ window.onload = function(){
 					    공지사항
 					</div>
 					<div class="more">
-					<a href="/Groupware/Board/NoticeBoardList.aspx">
+					<a href="#">
 					<img src="resources/images/main_dot_more.gif" alt="more"></a>
 					</div>
 					</div>
@@ -261,9 +264,9 @@ window.onload = function(){
 					<tbody>
 					<tr class="rgRow" id="ctl00_ContentPlaceHolder1_RadGridNote_ctl00__0" style="white-space:nowrap;">
 					<td class="col_lf">
-					<a href="#" onclick="openRadWindow4('23'); return false;">
+					<!-- <a href="#" onclick="openRadWindow4('23'); return false;">
 					공지사항
-					</a>
+					</a> -->
 					</td>
 					</tr>
 					</tbody>
@@ -280,7 +283,7 @@ window.onload = function(){
 					   자유게시판
 					</div>
 					<div class="more">
-					<a href="/Groupware/Board/FreeBoardList.aspx">
+					<a href="#">
 					<img src="resources/images/main_dot_more.gif" alt="more"></a>
 					</div>
 					</div>
@@ -303,9 +306,9 @@ window.onload = function(){
 					<tbody>
 					<tr class="rgRow" id="ctl00_ContentPlaceHolder1_RadGridBoard_ctl00__0" style="white-space:nowrap;">
 					<td class="col_lf">
-					<a href="#" onclick="openRadWindow5('37'); return false;">
+					<!-- <a href="#" onclick="openRadWindow5('37'); return false;">
 					111
-					 </a>
+					 </a> -->
 					</td>
 					</tr>
 					</tbody>
@@ -333,5 +336,17 @@ window.onload = function(){
 		<!--//Container-->
 	</div>
 	<!-- //wrap -->
+	
+	<script type="text/javascript">
+		$(function(){
+			$.ajax({
+				url:"main_draft_list.gvy",
+				type:"POST"
+				
+			}).done(function(res){
+				$("#draft_list_ajax").html(res.html);
+			});
+		});
+	</script>
 </body>
 </html>
